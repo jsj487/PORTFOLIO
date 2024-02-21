@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import React from "react";
 import backgroundImg from "./img/background.jpg";
+import FrontEnd from "./img/FrontEnd.png";
+import VersionControl from "./img/VersionControl.png";
+import Certificate from "./img/Certificate.png";
+import skills6 from "./img/skills6.png";
+import skills7 from "./img/skills7.png";
 import { IoPersonSharp, IoPhonePortrait, IoMail } from "react-icons/io5";
 import { FaCalendar, FaMapMarkerAlt, FaPencilAlt } from "react-icons/fa";
 
@@ -118,9 +123,26 @@ function Home() {
         <Skill_Container>
           <Skill_Title>SKILLS</Skill_Title>
           <Skill_Content_Container>
-            <Skill_WhiteBoard></Skill_WhiteBoard>
-            <Skill_WhiteBoard></Skill_WhiteBoard>
-            <Skill_WhiteBoard></Skill_WhiteBoard>
+            <Skill_WhiteBoard>
+              <div>FrontEnd</div>
+              <img src={FrontEnd} alt="Front" />
+            </Skill_WhiteBoard>
+            <Skill_WhiteBoard>
+              <div>VersionControl</div>
+              <img src={VersionControl} alt="Version" />
+            </Skill_WhiteBoard>
+            <Skill_WhiteBoard>
+              <div>Certificate</div>
+              <img src={Certificate} alt="QNET" />
+            </Skill_WhiteBoard>
+            <Skill_WhiteBoard>
+              <div>Communication</div>
+              <img src={skills6} alt="Figma" />
+            </Skill_WhiteBoard>
+            <Skill_WhiteBoard>
+              <div>Deployment</div>
+              <img src={skills7} alt="Postman" />
+            </Skill_WhiteBoard>
           </Skill_Content_Container>
         </Skill_Container>
       </Skill>
@@ -251,14 +273,33 @@ const Skill_Title = styled.div`
   text-align: center;
   font-weight: 700;
   font-size: 50px;
+  margin-bottom: 30px;
 `;
 const Skill_Content_Container = styled.div`
   width: 100%;
-  height: 100px;
   display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+  flex-direction: row;
 `;
 const Skill_WhiteBoard = styled.div`
+  width: 17rem;
+  padding: 1.5rem;
+  margin: 0 auto 2rem;
+  border-radius: 1rem;
   background-color: #fff;
+  div {
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #ccc;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #f4623a;
+  }
+
+  img {
+    width: 100%;
+  }
 `;
 
 export default Home;
