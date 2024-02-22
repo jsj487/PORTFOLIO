@@ -260,8 +260,14 @@ const skillsData = [
 
 const projectsData = [
   {
-    title: "푸드잇(식당예약사이트)",
+    title: "푸드잇(식당 예약 사이트)",
     date: "2022.12 ~ 2023.11 (4인 프로젝트)",
+    image: FoodEat1,
+    description: "음식점 예약 사이트",
+  },
+  {
+    title: "CasaVerde(식물 판매 사이트)",
+    date: "2023.10 ~ 2023.10 (6인 프로젝트)",
     image: FoodEat1,
   },
 ];
@@ -341,7 +347,7 @@ function Home() {
                   </ProjectImgContainer>
                   <ProjectDescriptionContainer>
                     <ProjectMainDescripTion>
-                      음식점 예약을 도와주는 사이트
+                      {project.description}
                     </ProjectMainDescripTion>
                   </ProjectDescriptionContainer>
                 </ProjectWhiteBoardContent>
