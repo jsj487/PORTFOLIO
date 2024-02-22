@@ -1,154 +1,46 @@
 import styled from "styled-components";
 import React from "react";
 import backgroundImg from "./img/background.jpg";
-import FrontEnd from "./img/FrontEnd.png";
-import VersionControl from "./img/VersionControl.png";
-import Certificate from "./img/Certificate.png";
-import skills6 from "./img/skills6.png";
-import skills7 from "./img/skills7.png";
+import FrontEndIcon from "./img/FrontEnd.png";
+import VersionControlIcon from "./img/VersionControl.png";
+import CertificateIcon from "./img/Certificate.png";
+import Skills6Icon from "./img/skills6.png";
+import Skills7Icon from "./img/skills7.png";
+import FoodEat1 from "./img/foodeat1.png";
 import { IoPersonSharp, IoPhonePortrait, IoMail } from "react-icons/io5";
 import { FaCalendar, FaMapMarkerAlt, FaPencilAlt } from "react-icons/fa";
 
-function Home() {
-  return (
-    <div>
-      <Header>
-        <Header_Title>JSJ PORTFOLIO</Header_Title>
-        <Header_Content>
-          <div>About Me</div>
-          <div>Skills</div>
-          <div>Project</div>
-        </Header_Content>
-      </Header>
-      <Title>
-        <Title_Container>
-          <Title_Main>
-            조승준
-            <br />
-            프론트엔드 개발자 포트폴리오
-          </Title_Main>
-          <hr />
-          <Title_Content>
-            안녕하세요.
-            <br />
-            발전을 위해 항상 생각하는 프론트엔드 웹 개발자입니다.
-            <br />제 사이트가 어떻게 하면 더 발전을 할 수 있을까 항상 생각하며
-            고민하는 것이 제 장점입니다.
-          </Title_Content>
-        </Title_Container>
-      </Title>
+// 공통 CSS 변수
+const Container = styled.div`
+  width: 100%;
+  max-width: 71.25rem;
+  padding: 4rem 2rem;
+  margin: 0 auto;
+`;
 
-      <AboutMe>
-        <AboutMe_Title>ABOUT ME</AboutMe_Title>
-        <AboutMe_Wrapper>
-          <AboutMe_Container>
-            <AboutMe_Content>
-              <AboutMe_Img_Conatiner>
-                <IoPersonSharp size={70} />
-              </AboutMe_Img_Conatiner>
-              <AboutMe_Info_Container>
-                <AboutMe_Info_Title>이름</AboutMe_Info_Title>
-                <AboutMe_Info>조승준</AboutMe_Info>
-              </AboutMe_Info_Container>
-            </AboutMe_Content>
-          </AboutMe_Container>
+const TitleContainer = styled(Container)`
+  text-align: center;
+  padding: 8.5rem 2rem 4rem;
 
-          <AboutMe_Container>
-            <AboutMe_Content>
-              <AboutMe_Img_Conatiner>
-                <FaCalendar size={70} />
-              </AboutMe_Img_Conatiner>
-              <AboutMe_Info_Container>
-                <AboutMe_Info_Title>생년월일</AboutMe_Info_Title>
-                <AboutMe_Info>1999.07.30</AboutMe_Info>
-              </AboutMe_Info_Container>
-            </AboutMe_Content>
-          </AboutMe_Container>
+  hr {
+    margin: 40px 0px;
+  }
+`;
 
-          <AboutMe_Container>
-            <AboutMe_Content>
-              <AboutMe_Img_Conatiner>
-                <FaMapMarkerAlt size={70} />
-              </AboutMe_Img_Conatiner>
-              <AboutMe_Info_Container>
-                <AboutMe_Info_Title>거주지</AboutMe_Info_Title>
-                <AboutMe_Info>서울특별시 강동구</AboutMe_Info>
-              </AboutMe_Info_Container>
-            </AboutMe_Content>
-          </AboutMe_Container>
+const SectionTitle = styled.div`
+  text-align: center;
+  font-weight: 700;
+  font-size: 50px;
+  margin-bottom: 30px;
+`;
 
-          <AboutMe_Container>
-            <AboutMe_Content>
-              <AboutMe_Img_Conatiner>
-                <IoPhonePortrait size={70} />
-              </AboutMe_Img_Conatiner>
-              <AboutMe_Info_Container>
-                <AboutMe_Info_Title>연락처</AboutMe_Info_Title>
-                <AboutMe_Info>010-8964-9828</AboutMe_Info>
-              </AboutMe_Info_Container>
-            </AboutMe_Content>
-          </AboutMe_Container>
-
-          <AboutMe_Container>
-            <AboutMe_Content>
-              <AboutMe_Img_Conatiner>
-                <IoMail size={70} />
-              </AboutMe_Img_Conatiner>
-              <AboutMe_Info_Container>
-                <AboutMe_Info_Title>이메일</AboutMe_Info_Title>
-                <AboutMe_Info>jsj487@naver.com</AboutMe_Info>
-              </AboutMe_Info_Container>
-            </AboutMe_Content>
-          </AboutMe_Container>
-
-          <AboutMe_Container>
-            <AboutMe_Content>
-              <AboutMe_Img_Conatiner>
-                <FaPencilAlt size={70} />
-              </AboutMe_Img_Conatiner>
-              <AboutMe_Info_Container>
-                <AboutMe_Info_Title>학력</AboutMe_Info_Title>
-                <AboutMe_Info>
-                  성결대학교
-                  <br />
-                  (정보통신공학부)
-                </AboutMe_Info>
-              </AboutMe_Info_Container>
-            </AboutMe_Content>
-          </AboutMe_Container>
-        </AboutMe_Wrapper>
-      </AboutMe>
-
-      <Skill>
-        <Skill_Container>
-          <Skill_Title>SKILLS</Skill_Title>
-          <Skill_Content_Container>
-            <Skill_WhiteBoard>
-              <div>FrontEnd</div>
-              <img src={FrontEnd} alt="Front" />
-            </Skill_WhiteBoard>
-            <Skill_WhiteBoard>
-              <div>VersionControl</div>
-              <img src={VersionControl} alt="Version" />
-            </Skill_WhiteBoard>
-            <Skill_WhiteBoard>
-              <div>Certificate</div>
-              <img src={Certificate} alt="QNET" />
-            </Skill_WhiteBoard>
-            <Skill_WhiteBoard>
-              <div>Communication</div>
-              <img src={skills6} alt="Figma" />
-            </Skill_WhiteBoard>
-            <Skill_WhiteBoard>
-              <div>Deployment</div>
-              <img src={skills7} alt="Postman" />
-            </Skill_WhiteBoard>
-          </Skill_Content_Container>
-        </Skill_Container>
-      </Skill>
-    </div>
-  );
-}
+const WhiteBoard = styled.div`
+  width: 17rem;
+  padding: 1.5rem;
+  margin: 0 auto 2rem;
+  border-radius: 1rem;
+  background-color: #fff;
+`;
 
 const Header = styled.div`
   display: flex;
@@ -160,12 +52,12 @@ const Header = styled.div`
   padding: 20px 0px;
 `;
 
-const Header_Title = styled.div`
+const HeaderTitle = styled.div`
   font-weight: 700;
   font-size: 30px;
 `;
 
-const Header_Content = styled.div`
+const HeaderContent = styled.div`
   display: flex;
   align-items: center;
   div {
@@ -195,22 +87,13 @@ const Title = styled.div`
   }
 `;
 
-const Title_Container = styled.div`
-  width: 100%;
-  max-width: 71.25rem;
-  text-align: center;
-  padding: 8.5rem 2rem 4rem;
-  margin: 0 auto;
-  hr {
-    margin: 40px 0px;
-  }
-`;
-const Title_Main = styled.div`
+const TitleMain = styled.div`
   font-weight: 700;
   font-size: 50px;
   color: #fff;
 `;
-const Title_Content = styled.div`
+
+const TitleContent = styled.div`
   font-weight: 400;
   font-size: 20px;
   color: #d9d9d9;
@@ -222,23 +105,20 @@ const AboutMe = styled.div`
   padding: 4rem 2rem;
   margin: 0 auto;
 `;
-const AboutMe_Title = styled.div`
-  margin: 0px auto 3rem;
-  text-align: center;
-  font-weight: 700;
-  font-size: 50px;
-`;
-const AboutMe_Wrapper = styled.div`
+
+const AboutMeWrapper = styled.div`
   display: flex;
   flex-flow: row wrap;
   margin: 0 auto;
   opacity: 0.8;
 `;
-const AboutMe_Container = styled.div`
+
+const AboutMeContainer = styled.div`
   width: 33.33333%;
   margin-bottom: 50px;
 `;
-const AboutMe_Content = styled.div`
+
+const AboutMeContent = styled.div`
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
@@ -246,16 +126,20 @@ const AboutMe_Content = styled.div`
   margin: 0 auto;
   opacity: 0.8;
 `;
-const AboutMe_Img_Conatiner = styled.div`
+
+const AboutMeImgContainer = styled.div`
   margin-right: 30px;
 `;
-const AboutMe_Info_Container = styled.div``;
-const AboutMe_Info_Title = styled.div`
+
+const AboutMeInfoContainer = styled.div``;
+
+const AboutMeInfoTitle = styled.div`
   font-weight: 700;
   font-size: 20px;
   margin-bottom: 10px;
 `;
-const AboutMe_Info = styled.div`
+
+const AboutMeInfo = styled.div`
   font-weight: 400;
   font-size: 15px;
 `;
@@ -263,43 +147,211 @@ const AboutMe_Info = styled.div`
 const Skill = styled.div`
   background-color: #f9c51d;
 `;
-const Skill_Container = styled.div`
+
+const SkillContainer = styled.div`
   width: 100%;
   max-width: 71.25rem;
   padding: 4rem 2rem;
   margin: 0 auto;
 `;
-const Skill_Title = styled.div`
-  text-align: center;
-  font-weight: 700;
-  font-size: 50px;
-  margin-bottom: 30px;
-`;
-const Skill_Content_Container = styled.div`
+
+const SkillContentContainer = styled.div`
   width: 100%;
   display: flex;
   flex-flow: column wrap;
   align-items: flex-start;
   flex-direction: row;
-`;
-const Skill_WhiteBoard = styled.div`
-  width: 17rem;
-  padding: 1.5rem;
-  margin: 0 auto 2rem;
-  border-radius: 1rem;
-  background-color: #fff;
-  div {
-    padding-bottom: 0.5rem;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid #ccc;
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: #f4623a;
-  }
 
   img {
     width: 100%;
   }
 `;
+
+const SkillTitle = styled.div`
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #ccc;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #f4623a;
+`;
+
+const Project = styled.div`
+  background-color: #0d80ee;
+`;
+
+const ProjectContainer = styled.div`
+  width: 100%;
+  max-width: 71.25rem;
+  padding: 4rem 2rem;
+  margin: 0 auto;
+`;
+
+const ProjectContentContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const ProjectWhiteBoard = styled(WhiteBoard)`
+  width: 60rem;
+`;
+
+const ProjectTitle = styled.div`
+  font-weight: 700;
+  font-size: 35px;
+  color: #000;
+  text-align: center;
+  margin-bottom: 20px;
+`;
+const ProjectDate = styled.div`
+  font-weight: 400;
+  text-align: center;
+  color: #9d9d9d;
+  margin-bottom: 30px;
+`;
+const ProjectWhiteBoardContent = styled.div`
+  display: flex;
+`;
+const ProjectImgContainer = styled.div`
+  overflow: hidden;
+  position: relative;
+  width: 50%;
+  margin-right: 3rem;
+
+  img {
+    display: flex;
+    flex-flow: row nowrap;
+    position: relative;
+    width: 100%;
+  }
+`;
+const ProjectDescriptionContainer = styled.div``;
+const ProjectMainDescripTion = styled.div``;
+
+const aboutMeData = [
+  { icon: <IoPersonSharp size={70} />, title: "이름", content: "조승준" },
+  { icon: <FaCalendar size={70} />, title: "생년월일", content: "1999.07.30" },
+  {
+    icon: <FaMapMarkerAlt size={70} />,
+    title: "거주지",
+    content: "서울특별시 강동구",
+  },
+  {
+    icon: <IoPhonePortrait size={70} />,
+    title: "연락처",
+    content: "010-8964-9828",
+  },
+  { icon: <IoMail size={70} />, title: "이메일", content: "jsj487@naver.com" },
+  {
+    icon: <FaPencilAlt size={70} />,
+    title: "학력",
+    content: "성결대학교 (정보통신공학부)",
+  },
+];
+
+const skillsData = [
+  { title: "FrontEnd", icon: FrontEndIcon, alt: "Front" },
+  { title: "VersionControl", icon: VersionControlIcon, alt: "Version" },
+  { title: "Certificate", icon: CertificateIcon, alt: "QNET" },
+  { title: "Communication", icon: Skills6Icon, alt: "Figma" },
+  { title: "Deployment", icon: Skills7Icon, alt: "Postman" },
+];
+
+const projectsData = [
+  {
+    title: "푸드잇(식당예약사이트)",
+    date: "2022.12 ~ 2023.11 (4인 프로젝트)",
+    image: FoodEat1,
+  },
+];
+
+function Home() {
+  return (
+    <div>
+      <Header>
+        <HeaderTitle>JSJ PORTFOLIO</HeaderTitle>
+        <HeaderContent>
+          <div>About Me</div>
+          <div>Skills</div>
+          <div>Project</div>
+        </HeaderContent>
+      </Header>
+
+      <Title>
+        <TitleContainer>
+          <TitleMain>
+            조승준
+            <br />
+            프론트엔드 개발자 포트폴리오
+          </TitleMain>
+          <hr />
+          <TitleContent>
+            안녕하세요.
+            <br />
+            발전을 위해 항상 생각하는 프론트엔드 웹 개발자입니다.
+            <br />제 사이트가 어떻게 하면 더 발전을 할 수 있을까 항상 생각하며
+            고민하는 것이 제 장점입니다.
+          </TitleContent>
+        </TitleContainer>
+      </Title>
+
+      <AboutMe>
+        <SectionTitle>ABOUT ME</SectionTitle>
+        <AboutMeWrapper>
+          {aboutMeData.map((item, index) => (
+            <AboutMeContainer key={index}>
+              <AboutMeContent>
+                <AboutMeImgContainer>{item.icon}</AboutMeImgContainer>
+                <AboutMeInfoContainer>
+                  <AboutMeInfoTitle>{item.title}</AboutMeInfoTitle>
+                  <AboutMeInfo>{item.content}</AboutMeInfo>
+                </AboutMeInfoContainer>
+              </AboutMeContent>
+            </AboutMeContainer>
+          ))}
+        </AboutMeWrapper>
+      </AboutMe>
+
+      <Skill>
+        <SkillContainer>
+          <SectionTitle>SKILLS</SectionTitle>
+          <SkillContentContainer>
+            {skillsData.map((skill, index) => (
+              <WhiteBoard key={index}>
+                <SkillTitle>{skill.title}</SkillTitle>
+                <img src={skill.icon} alt={skill.alt} />
+              </WhiteBoard>
+            ))}
+          </SkillContentContainer>
+        </SkillContainer>
+      </Skill>
+
+      <Project>
+        <ProjectContainer>
+          <SectionTitle>PROJECTS</SectionTitle>
+          <ProjectContentContainer>
+            {projectsData.map((project, index) => (
+              <ProjectWhiteBoard key={index}>
+                <ProjectTitle>{project.title}</ProjectTitle>
+                <ProjectDate>{project.date}</ProjectDate>
+                <ProjectWhiteBoardContent>
+                  <ProjectImgContainer>
+                    <img src={project.image}></img>
+                  </ProjectImgContainer>
+                  <ProjectDescriptionContainer>
+                    <ProjectMainDescripTion>
+                      음식점 예약을 도와주는 사이트
+                    </ProjectMainDescripTion>
+                  </ProjectDescriptionContainer>
+                </ProjectWhiteBoardContent>
+              </ProjectWhiteBoard>
+            ))}
+          </ProjectContentContainer>
+        </ProjectContainer>
+      </Project>
+    </div>
+  );
+}
 
 export default Home;
