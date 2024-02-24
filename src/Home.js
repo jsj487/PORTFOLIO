@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import backgroundImg from "./img/background.jpg";
 import FrontEndIcon from "./img/FrontEnd.png";
 import VersionControlIcon from "./img/VersionControl.png";
@@ -43,6 +43,12 @@ const WhiteBoard = styled.div`
   margin: 0 auto 2rem;
   border-radius: 1rem;
   background-color: #fff;
+  box-shadow: 1rem 1rem 1rem 0 rgba(68, 68, 68, 0.2);
+  transition: width 0.5s ease;
+
+  &:hover {
+    width: 18rem;
+  }
 `;
 
 const Header = styled.div`
@@ -53,20 +59,39 @@ const Header = styled.div`
   right: 0;
   left: 0;
   padding: 20px 0px;
+  z-index: 1;
+  background: ${(props) => (props.scrollDown ? "#fff" : "transparent")};
+  box-shadow: ${(props) =>
+    props.scrollDown ? "0 1px 0.3rem hsla(0,0%,80%,.8)" : "none"};
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 `;
 
 const HeaderTitle = styled.div`
   font-weight: 700;
   font-size: 30px;
+  cursor: pointer;
+  color: ${(props) => (props.scrollDown ? "#000" : "#c2c2c2")};
+
+  &:hover {
+    color: ${(props) => (props.scrollDown ? "#f4623a" : "#fff")};
+  }
 `;
 
 const HeaderContent = styled.div`
   display: flex;
   align-items: center;
+  color: ${(props) => (props.scrollDown ? "#000" : "#c2c2c2")};
+  transition: color 0.3s ease;
+
   div {
     padding: 0 20px;
     font-weight: 600;
     font-size: 20px;
+    cursor: pointer;
+
+    &:hover {
+      color: ${(props) => (props.scrollDown ? "#f4623a" : "#fff")};  }
+    }
   }
 `;
 
@@ -198,6 +223,11 @@ const ProjectContentContainer = styled.div`
 
 const ProjectWhiteBoard = styled(WhiteBoard)`
   width: 60rem;
+  box-shadow: 1rem 1rem 1rem 0 rgba(68, 68, 68, 0.2);
+
+  &:hover {
+    width: 60rem;
+  }
 `;
 
 const ProjectTitle = styled.div`
@@ -428,14 +458,64 @@ const projectsData = [
 ];
 
 function Home() {
+  const aboutMeRef = useRef(null);
+  const skillsRef = useRef(null);
+  const projectsRef = useRef(null);
+  const headerRef = useRef(null);
+
+  const scrollToTop = () => {
+    //HeaderTitle 눌렀을 최상단으로 이동하는 함수
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrollDown(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const scrollToRef = (ref) => {
+    if (ref && ref.current) {
+      window.scrollTo({
+        top: ref.current.offsetTop - headerRef.current.clientHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+
+  const [isScrollDown, setIsScrollDown] = useState(false); //화면이 최상단이 있는지 확인 하는 함수
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrollDown(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div>
-      <Header>
-        <HeaderTitle>JSJ PORTFOLIO</HeaderTitle>
-        <HeaderContent>
-          <div>About Me</div>
-          <div>Skills</div>
-          <div>Project</div>
+      <Header ref={headerRef} scrollDown={isScrollDown}>
+        <HeaderTitle scrollDown={isScrollDown} onClick={scrollToTop}>
+          JSJ PORTFOLIO
+        </HeaderTitle>
+        <HeaderContent scrollDown={isScrollDown}>
+          <div onClick={() => scrollToRef(aboutMeRef)}>About Me</div>
+          <div onClick={() => scrollToRef(skillsRef)}>Skills</div>
+          <div onClick={() => scrollToRef(projectsRef)}>Project</div>
         </HeaderContent>
       </Header>
 
@@ -457,7 +537,7 @@ function Home() {
         </TitleContainer>
       </Title>
 
-      <AboutMe>
+      <AboutMe ref={aboutMeRef}>
         <SectionTitle>ABOUT ME</SectionTitle>
         <AboutMeWrapper>
           {aboutMeData.map((item, index) => (
@@ -474,7 +554,7 @@ function Home() {
         </AboutMeWrapper>
       </AboutMe>
 
-      <Skill>
+      <Skill ref={skillsRef}>
         <SkillContainer>
           <SectionTitle>SKILLS</SectionTitle>
           <SkillContentContainer>
@@ -488,7 +568,7 @@ function Home() {
         </SkillContainer>
       </Skill>
 
-      <Project>
+      <Project ref={projectsRef}>
         <ProjectContainer>
           <SectionTitle>PROJECTS</SectionTitle>
           <ProjectContentContainer>
