@@ -6,11 +6,32 @@ import VersionControlIcon from "./img/VersionControl.png";
 import CertificateIcon from "./img/Certificate.png";
 import Skills6Icon from "./img/skills6.png";
 import Skills7Icon from "./img/skills7.png";
+
 import FoodEat1 from "./img/foodeat1.png";
+import FoodEat2 from "./img/foodeat2.png";
+import FoodEat3 from "./img/foodeat3.png";
+import FoodEat4 from "./img/foodeat4.jpg";
+import FoodEat5 from "./img/foodeat5.png";
+import FoodEat6 from "./img/foodeat6.png";
+
 import CasaVerde1 from "./img/casaverde1.png";
+import CasaVerde2 from "./img/casaverde2.png";
+import CasaVerde3 from "./img/casaverde3.png";
+import CasaVerde4 from "./img/casaverde4.png";
+import CasaVerde5 from "./img/casaverde5.png";
+import CasaVerde6 from "./img/casaverde6.png";
+import CasaVerde7 from "./img/casaverde7.png";
+
 import JetFlix1 from "./img/jetflix1.png";
+import JetFlix2 from "./img/jetflix2.png";
+import JetFlix3 from "./img/jetflix3.png";
+
 import Portfolio1 from "./img/portfolio1.png";
+import Portfolio2 from "./img/portfolio2.png";
+import Portfolio3 from "./img/portfolio3.png";
+
 import { IoPersonSharp, IoPhonePortrait, IoMail } from "react-icons/io5";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { FaCalendar, FaMapMarkerAlt, FaPencilAlt } from "react-icons/fa";
 
 // 공통 CSS 변수
@@ -246,24 +267,17 @@ const ProjectDate = styled.div`
 const ProjectWhiteBoardContent = styled.div`
   display: flex;
 `;
-const ProjectImgContainer = styled.div`
+const ProjectImgBox = styled.div`
   overflow: hidden;
   position: relative;
   width: 50%;
   margin-right: 3rem;
-
-  img {
-    display: flex;
-    flex-flow: row nowrap;
-    position: relative;
-    width: 100%;
-  }
 `;
+
 const ProjectDescriptionContainer = styled.div`
   width: 50%;
 `;
 const ProjectMainDescription = styled.div``;
-const DescriptionLabel = styled.div``;
 const DescriptionSubContainer = styled.div`
   display: flex;
   margin-bottom: 1rem;
@@ -328,7 +342,7 @@ const projectsData = [
   {
     title: "푸드잇(식당 예약 사이트)",
     date: "2022.12 ~ 2023.11 (4인 프로젝트)",
-    image: FoodEat1,
+    image: [FoodEat1, FoodEat2, FoodEat3, FoodEat4, FoodEat5, FoodEat6],
     description: (
       <div>
         <b>
@@ -370,7 +384,15 @@ const projectsData = [
   {
     title: "CasaVerde(식물 판매 사이트)",
     date: "2023.10 ~ 2023.10 (6인 프로젝트)",
-    image: CasaVerde1,
+    image: [
+      CasaVerde1,
+      CasaVerde2,
+      CasaVerde3,
+      CasaVerde4,
+      CasaVerde5,
+      CasaVerde6,
+      CasaVerde7,
+    ],
     description: (
       <div>
         <b>
@@ -408,7 +430,7 @@ const projectsData = [
   {
     title: "JETFLIX(영화 소개 사이트)",
     date: "2024.1 ~ 2024.1 (1인 프로젝트)",
-    image: JetFlix1,
+    image: [JetFlix1, JetFlix2, JetFlix3],
     description: (
       <div>
         <b>영화 목록 API를 이용해서 만든 영화 소개 사이트입니다.</b>
@@ -431,7 +453,7 @@ const projectsData = [
   {
     title: "JSJ Portfolio(포트폴리오)",
     date: "2024.2 ~ 2024.2 (1인 프로젝트)",
-    image: Portfolio1,
+    image: [Portfolio1, Portfolio2, Portfolio3],
     description: (
       <div>
         <b>
@@ -456,6 +478,180 @@ const projectsData = [
     backend: "-",
   },
 ];
+
+//슬라이드 이미지 스타일드 컴포넌트
+const SliderContainer = styled.div`
+  overflow: hidden;
+  width: 100%;
+  position: relative; // 상대 위치 설정 유지
+  margin-bottom: 20px; // 버튼을 위한 공간 확보
+`;
+
+const ImagesContainer = styled.div`
+  display: flex;
+  transition: transform 0.3s ease-out;
+  margin-bottom: 40px;
+`;
+
+const Image = styled.img`
+  max-width: 100%; /* 이미지가 컨테이너 너비를 초과하지 않도록 설정 */
+  height: auto; /* 이미지의 원본 비율 유지 */
+  flex: 0 0 auto; /* flex 컨테이너 내에서 이미지의 크기 고정 */
+  object-fit: contain; // 원본 이미지 비율을 유지하면서 컨테이너에 맞춰 조정합니다.
+  cursor: pointer;
+`;
+
+const ButtonUI = styled.div`
+  display: flex;
+  justify-content: center; // 버튼을 슬라이더 중앙 아래로 정렬
+  align-items: center;
+  gap: 20px; // 버튼 사이 간격
+
+  button {
+    pointer-events: auto;
+    background-color: #ffffff; // 버튼 배경색 설정
+    border: 1px solid #000; // 버튼 테두리 설정
+    border-radius: 50%; // 버튼을 원형으로 디자인
+    cursor: pointer;
+    width: 40px; // 버튼 크기 설정
+    height: 40px; // 버튼 크기 설정
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:focus {
+      outline: none; // 포커스 시 아웃라인 제거
+    }
+
+    svg {
+      width: 20px; // 아이콘 크기 조정
+      height: 20px; // 아이콘 크기 조정
+    }
+  }
+`;
+
+const ModalBackdrop = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+`;
+
+const ModalContent = styled.div`
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+`;
+
+const ModalImage = styled.img`
+  max-width: 90%;
+  max-height: 80vh;
+`;
+
+function Modal({ imageUrl, onClose }) {
+  return (
+    <ModalBackdrop onClick={onClose}>
+      <ModalContent onClick={(e) => e.stopPropagation()}>
+        <ModalImage src={imageUrl} alt="Modal content" />
+      </ModalContent>
+    </ModalBackdrop>
+  );
+}
+
+function ImageSlider({ images }) {
+  const [currentSlide, setCurrentSlide] = useState(1); // 첫 번째 실제 이미지로 시작
+  const [displaySlideNumber, setDisplaySlideNumber] = useState(1); // 사용자에게 보여지는 슬라이드 번호
+  const sliderRef = useRef(null);
+  const transitionRef = useRef(true);
+
+  const handleTransitionEnd = () => {
+    if (currentSlide === 0) {
+      transitionRef.current = false;
+      setCurrentSlide(images.length);
+      setDisplaySlideNumber(images.length);
+    } else if (currentSlide === images.length + 1) {
+      transitionRef.current = false;
+      setCurrentSlide(1);
+      setDisplaySlideNumber(1);
+    } else {
+      setDisplaySlideNumber(currentSlide);
+    }
+  };
+
+  const updateSlidePosition = () => {
+    if (transitionRef.current) {
+      sliderRef.current.style.transition = "transform 0.3s ease-out";
+    } else {
+      sliderRef.current.style.transition = "none";
+      transitionRef.current = true;
+    }
+    sliderRef.current.style.transform = `translateX(-${currentSlide * 100}%)`;
+  };
+
+  useEffect(() => {
+    updateSlidePosition();
+    sliderRef.current.addEventListener("transitionend", handleTransitionEnd);
+    return () => {
+      sliderRef.current.removeEventListener(
+        "transitionend",
+        handleTransitionEnd
+      );
+    };
+  }, [currentSlide]);
+
+  const moveSlide = (direction) => {
+    if (direction === "prev") {
+      setCurrentSlide((prev) => prev - 1);
+    } else if (direction === "next") {
+      setCurrentSlide((prev) => prev + 1);
+    }
+  };
+
+  //모달창
+  const [modalOpen, setModalOpen] = useState(false); // 모달 상태
+  const [selectedImage, setSelectedImage] = useState(""); // 선택된 이미지 URL
+
+  const openModal = (imageUrl) => {
+    setSelectedImage(imageUrl);
+    setModalOpen(true);
+  };
+
+  return (
+    <SliderContainer>
+      <ImagesContainer ref={sliderRef}>
+        <Image src={images[images.length - 1]} alt="Clone Last" />
+        {images.map((image, index) => (
+          <Image
+            key={index}
+            src={image}
+            alt={`Slide ${index + 1}`}
+            onClick={() => openModal(image)}
+          />
+        ))}
+        <Image src={images[0]} alt="Clone First" />
+      </ImagesContainer>
+      {modalOpen && (
+        <Modal imageUrl={selectedImage} onClose={() => setModalOpen(false)} />
+      )}
+
+      <ButtonUI>
+        <button onClick={() => moveSlide("prev")}>
+          <IoIosArrowBack />
+        </button>
+        <span>{`${displaySlideNumber}/${images.length}`}</span>
+        <button onClick={() => moveSlide("next")}>
+          <IoIosArrowForward />
+        </button>
+      </ButtonUI>
+    </SliderContainer>
+  );
+}
 
 function Home() {
   const aboutMeRef = useRef(null);
@@ -570,16 +766,16 @@ function Home() {
 
       <Project ref={projectsRef}>
         <ProjectContainer>
-          <SectionTitle>PROJECTS</SectionTitle>
+          <SectionTitle style={{ color: "#fff" }}>PROJECTS</SectionTitle>
           <ProjectContentContainer>
             {projectsData.map((project, index) => (
               <ProjectWhiteBoard key={index}>
                 <ProjectTitle>{project.title}</ProjectTitle>
                 <ProjectDate>{project.date}</ProjectDate>
                 <ProjectWhiteBoardContent>
-                  <ProjectImgContainer>
-                    <img src={project.image}></img>
-                  </ProjectImgContainer>
+                  <ProjectImgBox>
+                    <ImageSlider images={project.image} />
+                  </ProjectImgBox>
                   <ProjectDescriptionContainer>
                     <ProjectMainDescription>
                       {project.description}
@@ -629,3 +825,4 @@ function Home() {
 }
 
 export default Home;
+export { ImageSlider };
