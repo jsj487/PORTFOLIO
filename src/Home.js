@@ -543,27 +543,75 @@ const ModalBackdrop = styled.div`
   z-index: 1000;
 `;
 
-const ModalContent = styled.div`
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-`;
-
 const ModalImage = styled.img`
-  max-width: 90%;
+  max-width: 80%;
   max-height: 80vh;
+  z-index: 1050; /* 화살표 버튼보다 앞에 위치하도록 z-index 설정 */
 `;
 
-function Modal({ imageUrl, onClose }) {
+const ArrowButton = styled.button`
+  all: unset;
+  font-size: 2em;
+  color: white;
+  cursor: pointer;
+  z-index: 1051; /* 모달 이미지 위에 오도록 z-index 설정 */
+  &:hover {
+    color: #ddd;
+  }
+`;
+
+const LeftArrow = styled(ArrowButton)`
+  position: absolute;
+  left: 50px; /* 왼쪽에서부터의 거리 */
+  svg {
+    font-size: 80px;
+  }
+`;
+
+const RightArrow = styled(ArrowButton)`
+  position: absolute;
+  right: 50px; /* 오른쪽에서부터의 거리 */
+  svg {
+    font-size: 80px;
+  }
+`;
+
+// 모달 컴포넌트
+function Modal({ imageUrl, images, onClose }) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(
+    images.indexOf(imageUrl)
+  );
+
+  const goToPrevious = (e) => {
+    e.stopPropagation();
+    const newIndex = (currentImageIndex - 1 + images.length) % images.length;
+    setCurrentImageIndex(newIndex);
+  };
+
+  const goToNext = (e) => {
+    e.stopPropagation();
+    const newIndex = (currentImageIndex + 1) % images.length;
+    setCurrentImageIndex(newIndex);
+  };
+
   return (
     <ModalBackdrop onClick={onClose}>
-      <ModalContent onClick={(e) => e.stopPropagation()}>
-        <ModalImage src={imageUrl} alt="Modal content" />
-      </ModalContent>
+      <ModalImage
+        src={images[currentImageIndex]}
+        alt={`Image ${currentImageIndex + 1}`}
+        onClick={(e) => e.stopPropagation()}
+      />
+      <LeftArrow onClick={goToPrevious}>
+        <IoIosArrowBack />
+      </LeftArrow>
+      <RightArrow onClick={goToNext}>
+        <IoIosArrowForward />
+      </RightArrow>
     </ModalBackdrop>
   );
 }
 
+//이미지 슬라이더
 function ImageSlider({ images }) {
   const [currentSlide, setCurrentSlide] = useState(1); // 첫 번째 실제 이미지로 시작
   const [displaySlideNumber, setDisplaySlideNumber] = useState(1); // 사용자에게 보여지는 슬라이드 번호
@@ -614,8 +662,8 @@ function ImageSlider({ images }) {
   };
 
   //모달창
-  const [modalOpen, setModalOpen] = useState(false); // 모달 상태
-  const [selectedImage, setSelectedImage] = useState(""); // 선택된 이미지 URL
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
 
   const openModal = (imageUrl) => {
     setSelectedImage(imageUrl);
@@ -637,9 +685,12 @@ function ImageSlider({ images }) {
         <Image src={images[0]} alt="Clone First" />
       </ImagesContainer>
       {modalOpen && (
-        <Modal imageUrl={selectedImage} onClose={() => setModalOpen(false)} />
+        <Modal
+          imageUrl={selectedImage}
+          images={images}
+          onClose={() => setModalOpen(false)}
+        />
       )}
-
       <ButtonUI>
         <button onClick={() => moveSlide("prev")}>
           <IoIosArrowBack />
