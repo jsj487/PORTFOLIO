@@ -1,0 +1,24 @@
+/* 수정된 CSS */
+.slide-enter,
+.slide-exit-active {
+  position: absolute;
+  width: 100%;
+}
+
+.slide-enter {
+  transform: translateX(100%);
+}
+
+.slide-enter-active {
+  transform: translateX(0);
+  transition: transform 2500ms ease-in-out;
+}
+
+.slide-exit {
+  transform: translateX(0);
+}
+
+.slide-exit-active {
+  transform: translateX(-100%);
+  transition: transform 2500ms ease-in-out;
+}
