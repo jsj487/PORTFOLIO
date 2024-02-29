@@ -25,7 +25,7 @@ function RouteRender() {
 
   return (
     <TransitionGroup className="route-wrapper">
-      <CSSTransition key={location.key} timeout={2500} classNames="slide">
+      <CSSTransition key={location.key} timeout={1000} classNames="slide">
         <Routes location={location}>
           {" "}
           {/* className 제거 */}
