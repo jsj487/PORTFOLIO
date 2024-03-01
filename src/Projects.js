@@ -1,5 +1,7 @@
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
 import React, { useRef, useEffect, useState } from "react";
+import Header from "./Header";
 
 import FoodEat1 from "./img/foodeat1.png";
 import FoodEat2 from "./img/foodeat2.png";
@@ -25,6 +27,7 @@ import Portfolio2 from "./img/portfolio2.png";
 import Portfolio3 from "./img/portfolio3.png";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 
 const WhiteBoard = styled.div`
   width: 17rem;
@@ -40,15 +43,9 @@ const WhiteBoard = styled.div`
   }
 `;
 
-const SectionTitle = styled.div`
-  text-align: center;
-  font-weight: 700;
-  font-size: 50px;
-  margin-bottom: 30px;
-`;
-
 const Project = styled.div`
   background-color: #0177a9;
+  padding-top: 100px;
 `;
 
 const ProjectContainer = styled.div`
@@ -267,6 +264,26 @@ const projectsData = [
 ];
 
 //슬라이드 이미지 스타일드 컴포넌트
+const LeftAnimation = keyframes`
+  0%, 100% { left: 40px; }
+  50% { left: 30px; }
+`;
+
+const PrevPage = styled.div`
+  position: fixed; // 화면에 고정되도록 설정
+  left: 40px;
+  top: 50%; // 페이지 하단에 위치하도록 조정합니다.
+  font-size: 100px;
+  transition: all 2s;
+  svg {
+    cursor: pointer;
+  }
+
+  &:hover {
+    animation: ${LeftAnimation} 1s ease-in-out infinite;
+  }
+`;
+
 const SliderContainer = styled.div`
   overflow: hidden;
   width: 100%;
@@ -492,11 +509,18 @@ function ImageSlider({ images }) {
 }
 
 function Projects() {
+  const navigate = useNavigate();
+  const PrevBtn = () => {
+    navigate("/skills");
+  };
   return (
     <div>
+      <Header />
+      <PrevPage onClick={PrevBtn}>
+        <MdKeyboardDoubleArrowLeft />
+      </PrevPage>
       <Project>
         <ProjectContainer>
-          <SectionTitle style={{ color: "#fff" }}>PROJECTS</SectionTitle>
           <ProjectContentContainer>
             {projectsData.map((project, index) => (
               <ProjectWhiteBoard key={index}>

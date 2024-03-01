@@ -1,10 +1,18 @@
 import React from "react";
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
+import Header from "./Header";
 
 import { IoPersonSharp, IoPhonePortrait, IoMail } from "react-icons/io5";
 import { FaCalendar, FaMapMarkerAlt, FaPencilAlt } from "react-icons/fa";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
 import Resume from "./img/resume.jpg"; // 이 부분은 실제 경로에 맞게 변경해주세요.
+
+const AboutMeContainer = styled.div`
+  height: 100vh; // 뷰포트 높이를 100%로 설정
+  overflow-y: hidden; // 세로 스크롤을 숨김
+`;
 
 const PageContainer = styled.div`
   display: flex;
@@ -12,19 +20,7 @@ const PageContainer = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%; // 페이지 컨테이너의 너비를 100%로 설정합니다.
-  height: 100vh;
-`;
-
-const SectionTitle = styled.h2`
-  margin-bottom: 50px;
-  margin-top: 0px;
-  text-align: center; // 텍스트 중앙 정렬
-  width: 100%; // 너비 100%
-  font-size: 50px;
-
-  font-family: "Anton", sans-serif; // 폰트 패밀리 설정
-  font-weight: 400; // 폰트 두께 설정
-  font-style: normal; // 폰트 스타일 설정
+  padding-top: 100px;
 `;
 
 const ContentWrapper = styled.div`
@@ -91,6 +87,24 @@ const InfoTitle = styled.div`
 const Info = styled.div`
   font-size: 1.5em; // 글자 크기 조절
 `;
+const hoverAnimation = keyframes`
+  0%, 100% { right: 40px; }
+  50% { right: 30px; }
+`;
+
+const NextPage = styled.div`
+  position: absolute;
+  right: 40px;
+  font-size: 100px;
+  transition: all 2s;
+
+  &:hover {
+    animation: ${hoverAnimation} 1s ease-in-out infinite;
+  }
+  svg {
+    cursor: pointer;
+  }
+`;
 
 const aboutMeData = [
   { icon: <IoPersonSharp />, title: "이름", content: "조승준" },
@@ -120,26 +134,35 @@ const aboutMeData = [
 ];
 
 function AboutMe() {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/skills");
+  };
   return (
-    <PageContainer>
-      <SectionTitle>ABOUT ME</SectionTitle>
-      <ContentWrapper>
-        <ImageSection>
-          <ResumeImage src={Resume} alt="Resume" />
-        </ImageSection>
-        <InfoSection>
-          {aboutMeData.map((item, index) => (
-            <InfoContainer key={index}>
-              <IconContainer>{item.icon}</IconContainer>
-              <InfoText>
-                <InfoTitle>{item.title}</InfoTitle>
-                <Info>{item.content}</Info>
-              </InfoText>
-            </InfoContainer>
-          ))}
-        </InfoSection>
-      </ContentWrapper>
-    </PageContainer>
+    <AboutMeContainer>
+      <Header />
+      <PageContainer>
+        <ContentWrapper>
+          <ImageSection>
+            <ResumeImage src={Resume} alt="Resume" />
+          </ImageSection>
+          <InfoSection>
+            {aboutMeData.map((item, index) => (
+              <InfoContainer key={index}>
+                <IconContainer>{item.icon}</IconContainer>
+                <InfoText>
+                  <InfoTitle>{item.title}</InfoTitle>
+                  <Info>{item.content}</Info>
+                </InfoText>
+              </InfoContainer>
+            ))}
+          </InfoSection>
+        </ContentWrapper>
+        <NextPage>
+          <MdKeyboardDoubleArrowRight onClick={handleClick} />
+        </NextPage>
+      </PageContainer>
+    </AboutMeContainer>
   );
 }
 

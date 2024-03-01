@@ -1,5 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
+import Header from "./Header";
 
 import FrontEndIcon from "./img/FrontEnd.png";
 import VersionControlIcon from "./img/VersionControl.png";
@@ -7,21 +9,22 @@ import CertificateIcon from "./img/Certificate.png";
 import Skills6Icon from "./img/skills6.png";
 import Skills7Icon from "./img/skills7.png";
 
-const SectionTitle = styled.div`
-  text-align: center;
-  font-weight: 700;
-  font-size: 50px;
-  margin-bottom: 30px;
-`;
+import {
+  MdKeyboardDoubleArrowRight,
+  MdKeyboardDoubleArrowLeft,
+} from "react-icons/md";
 
 const Skill = styled.div`
+  height: 100vh;
+  overflow-y: hidden; // 세로 스크롤을 숨김
   background-color: #f9c51d;
+  position: relative; // NextPage를 포함하기 위한 상대 위치
 `;
 
 const SkillContainer = styled.div`
   width: 100%;
   max-width: 71.25rem;
-  padding: 4rem 2rem;
+  padding: 10rem 2rem;
   margin: 0 auto;
 `;
 
@@ -60,6 +63,45 @@ const SkillTitle = styled.div`
   color: #f4623a;
 `;
 
+const RightAnimation = keyframes`
+  0%, 100% { right: 40px; }
+  50% { right: 30px; }
+`;
+
+const LeftAnimation = keyframes`
+  0%, 100% { left: 40px; }
+  50% { left: 30px; }
+`;
+
+const NextPage = styled.div`
+  position: fixed; // 화면에 고정되도록 설정
+  right: 40px;
+  top: 50%; // 페이지 하단에 위치하도록 조정합니다.
+  font-size: 100px;
+  transition: all 2s;
+  svg {
+    cursor: pointer;
+  }
+
+  &:hover {
+    animation: ${RightAnimation} 1s ease-in-out infinite;
+  }
+`;
+const PrevPage = styled.div`
+  position: fixed; // 화면에 고정되도록 설정
+  left: 40px;
+  top: 50%; // 페이지 하단에 위치하도록 조정합니다.
+  font-size: 100px;
+  transition: all 2s;
+  svg {
+    cursor: pointer;
+  }
+
+  &:hover {
+    animation: ${LeftAnimation} 1s ease-in-out infinite;
+  }
+`;
+
 const skillsData = [
   { title: "FrontEnd", icon: FrontEndIcon, alt: "Front" },
   { title: "VersionControl", icon: VersionControlIcon, alt: "Version" },
@@ -69,22 +111,33 @@ const skillsData = [
 ];
 
 function Skills() {
+  const navigate = useNavigate();
+  const NextBtn = () => {
+    navigate("/projects");
+  };
+  const PrevBtn = () => {
+    navigate("/about-me");
+  };
   return (
-    <div>
-      <Skill>
-        <SkillContainer>
-          <SectionTitle>SKILLS</SectionTitle>
-          <SkillContentContainer>
-            {skillsData.map((skill, index) => (
-              <WhiteBoard key={index}>
-                <SkillTitle>{skill.title}</SkillTitle>
-                <img src={skill.icon} alt={skill.alt} />
-              </WhiteBoard>
-            ))}
-          </SkillContentContainer>
-        </SkillContainer>
-      </Skill>
-    </div>
+    <Skill>
+      <Header />
+      <PrevPage onClick={PrevBtn}>
+        <MdKeyboardDoubleArrowLeft />
+      </PrevPage>
+      <SkillContainer>
+        <SkillContentContainer>
+          {skillsData.map((skill, index) => (
+            <WhiteBoard key={index}>
+              <SkillTitle>{skill.title}</SkillTitle>
+              <img src={skill.icon} alt={skill.alt} />
+            </WhiteBoard>
+          ))}
+        </SkillContentContainer>
+      </SkillContainer>
+      <NextPage onClick={NextBtn}>
+        <MdKeyboardDoubleArrowRight />
+      </NextPage>
+    </Skill>
   );
 }
 

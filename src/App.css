@@ -1,24 +1,31 @@
-/* 수정된 CSS */
-.slide-enter,
-.slide-exit-active {
-  position: absolute;
-  width: 100%;
-}
-
-.slide-enter {
+/* About Me에서 Skills로 이동할 때 오른쪽으로 슬라이드 */
+.slide-right-enter {
   transform: translateX(100%);
 }
-
-.slide-enter-active {
+.slide-right-enter-active {
   transform: translateX(0);
   transition: transform 1000ms ease-in-out;
 }
-
-.slide-exit {
+.slide-right-exit {
   transform: translateX(0);
 }
-
-.slide-exit-active {
+.slide-right-exit-active {
   transform: translateX(-100%);
+  transition: transform 1000ms ease-in-out;
+}
+
+/* Skills에서 About Me로 이동할 때 왼쪽으로 슬라이드 */
+.slide-left-enter {
+  transform: translateX(-100%);
+}
+.slide-left-enter-active {
+  transform: translateX(0);
+  transition: transform 1000ms ease-in-out;
+}
+.slide-left-exit {
+  transform: translateX(0);
+}
+.slide-left-exit-active {
+  transform: translateX(100%);
   transition: transform 1000ms ease-in-out;
 }
