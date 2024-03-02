@@ -447,15 +447,33 @@ function ImageSlider({ images }) {
   };
 
   useEffect(() => {
-    updateSlidePosition();
-    sliderRef.current.addEventListener("transitionend", handleTransitionEnd);
-    return () => {
-      sliderRef.current.removeEventListener(
-        "transitionend",
-        handleTransitionEnd
-      );
+    const slider = sliderRef.current; // Ref에서 현재 값 가져오기
+    const handleTransitionEnd = () => {
+      if (currentSlide === 0) {
+        transitionRef.current = false;
+        setCurrentSlide(images.length);
+        setDisplaySlideNumber(images.length);
+      } else if (currentSlide === images.length + 1) {
+        transitionRef.current = false;
+        setCurrentSlide(1);
+        setDisplaySlideNumber(1);
+      } else {
+        setDisplaySlideNumber(currentSlide);
+      }
     };
-  }, [currentSlide]);
+
+    // slider가 존재할 때만 이벤트 리스너를 추가
+    if (slider) {
+      slider.addEventListener("transitionend", handleTransitionEnd);
+    }
+
+    // cleanup 함수에서도 slider가 존재하는지 확인
+    return () => {
+      if (slider) {
+        slider.removeEventListener("transitionend", handleTransitionEnd);
+      }
+    };
+  }, [currentSlide, images.length]);
 
   const moveSlide = (direction) => {
     if (direction === "prev") {

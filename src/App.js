@@ -12,7 +12,13 @@ import Skills from "./Skills";
 import Projects from "./Projects";
 import "./App.css"; // CSS 애니메이션을 위한 스타일 시트
 
-// 기타 필요한 컴포넌트 import
+// 페이지 순서를 나타내는 객체
+const pageOrder = {
+  "/": 0,
+  "/about-me": 1,
+  "/skills": 2,
+  "/projects": 3,
+};
 
 function App() {
   return (
@@ -26,16 +32,26 @@ function RouteRender() {
   const location = useLocation();
   const [prevPath, setPrevPath] = useState(location.pathname);
 
+  // 현재 경로의 순서를 가져옵니다.
+  const currentPageOrder = pageOrder[location.pathname];
+  // 이전 경로의 순서를 가져옵니다.
+  const prevPageOrder = pageOrder[prevPath];
+
+  let transitionClassName = "";
+  if (location.pathname === "/") {
+    // Home으로 돌아가는 경우 애니메이션 없음
+    transitionClassName = "no-animation";
+  } else {
+    transitionClassName =
+      currentPageOrder > prevPageOrder ? "slide-right" : "slide-left";
+  }
+
   useEffect(() => {
     // location.pathname이 변경될 때 이전 경로를 업데이트
     if (location.pathname !== prevPath) {
       setPrevPath(location.pathname);
     }
   }, [location, prevPath]);
-
-  // 애니메이션 방향을 결정하는 로직
-  const transitionClassName =
-    location.pathname === "/about-me" ? "slide-left" : "slide-right";
 
   return (
     <TransitionGroup>

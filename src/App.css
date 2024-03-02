@@ -29,3 +29,11 @@
   transform: translateX(100%);
   transition: transform 1000ms ease-in-out;
 }
+
+/* App.css */
+.no-animation.enter,
+.no-animation.exit,
+.no-animation.enter-active,
+.no-animation.exit-active {
+  /* Home으로 돌아갈 때 애니메이션을 적용하지 않으므로 여기에는 스타일을 정의하지 않습니다. */
+}
