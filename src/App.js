@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   useLocation,
+  BrowserRouter,
 } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Home from "./Home";
@@ -22,9 +23,9 @@ const pageOrder = {
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter basename="/PORTFOLIO">
       <RouteRender />
-    </Router>
+    </BrowserRouter>
   );
 }
 
