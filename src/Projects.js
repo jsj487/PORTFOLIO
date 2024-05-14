@@ -25,6 +25,7 @@ import JetFlix3 from "./img/jetflix3.png";
 import Portfolio1 from "./img/portfolio1.png";
 import Portfolio2 from "./img/portfolio2.png";
 import Portfolio3 from "./img/portfolio3.png";
+import Portfolio4 from "./img/portfolio4.png";
 
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
@@ -237,7 +238,7 @@ const projectsData = [
   {
     title: "JSJ Portfolio(포트폴리오)",
     date: "2024.2 ~ 2024.2 (1인 프로젝트)",
-    image: [Portfolio1, Portfolio2, Portfolio3],
+    image: [Portfolio1, Portfolio2, Portfolio3, Portfolio4],
     description: (
       <div>
         <b>
@@ -422,19 +423,35 @@ function ImageSlider({ images }) {
   const sliderRef = useRef(null);
   const transitionRef = useRef(true);
 
-  const handleTransitionEnd = () => {
-    if (currentSlide === 0) {
-      transitionRef.current = false;
-      setCurrentSlide(images.length);
-      setDisplaySlideNumber(images.length);
-    } else if (currentSlide === images.length + 1) {
-      transitionRef.current = false;
-      setCurrentSlide(1);
-      setDisplaySlideNumber(1);
-    } else {
-      setDisplaySlideNumber(currentSlide);
+  useEffect(() => {
+    const slider = sliderRef.current;
+
+    if (slider) {
+      const handleTransitionEnd = () => {
+        if (currentSlide === 0) {
+          transitionRef.current = false;
+          setCurrentSlide(images.length);
+          setDisplaySlideNumber(images.length);
+        } else if (currentSlide === images.length + 1) {
+          transitionRef.current = false;
+          setCurrentSlide(1);
+          setDisplaySlideNumber(1);
+        } else {
+          setDisplaySlideNumber(currentSlide);
+        }
+      };
+
+      slider.addEventListener("transitionend", handleTransitionEnd);
+
+      return () => {
+        slider.removeEventListener("transitionend", handleTransitionEnd);
+      };
     }
-  };
+  }, [currentSlide, images.length]);
+
+  useEffect(() => {
+    updateSlidePosition();
+  }, [currentSlide]);
 
   const updateSlidePosition = () => {
     if (transitionRef.current) {
@@ -446,44 +463,14 @@ function ImageSlider({ images }) {
     sliderRef.current.style.transform = `translateX(-${currentSlide * 100}%)`;
   };
 
-  useEffect(() => {
-    const slider = sliderRef.current; // Ref에서 현재 값 가져오기
-    const handleTransitionEnd = () => {
-      if (currentSlide === 0) {
-        transitionRef.current = false;
-        setCurrentSlide(images.length);
-        setDisplaySlideNumber(images.length);
-      } else if (currentSlide === images.length + 1) {
-        transitionRef.current = false;
-        setCurrentSlide(1);
-        setDisplaySlideNumber(1);
-      } else {
-        setDisplaySlideNumber(currentSlide);
-      }
-    };
-
-    // slider가 존재할 때만 이벤트 리스너를 추가
-    if (slider) {
-      slider.addEventListener("transitionend", handleTransitionEnd);
-    }
-
-    // cleanup 함수에서도 slider가 존재하는지 확인
-    return () => {
-      if (slider) {
-        slider.removeEventListener("transitionend", handleTransitionEnd);
-      }
-    };
-  }, [currentSlide, images.length]);
-
   const moveSlide = (direction) => {
     if (direction === "prev") {
-      setCurrentSlide((prev) => prev - 1);
+      setCurrentSlide((prev) => (prev === 0 ? images.length : prev - 1));
     } else if (direction === "next") {
-      setCurrentSlide((prev) => prev + 1);
+      setCurrentSlide((prev) => (prev === images.length + 1 ? 1 : prev + 1));
     }
   };
 
-  //모달창
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
 
