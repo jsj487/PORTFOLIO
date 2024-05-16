@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
-import Header from "./Header";
+import Header from "./components/Header";
 
 import FrontEndIcon from "./img/FrontEnd.png";
 import VersionControlIcon from "./img/VersionControl.png";

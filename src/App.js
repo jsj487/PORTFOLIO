@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  useLocation,
-  BrowserRouter,
-} from "react-router-dom";
+import { Routes, Route, useLocation, BrowserRouter } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import Home from "./Home";
 import AboutMe from "./AboutMe";
 import Skills from "./Skills";
 import Projects from "./Projects";
-import "./App.css"; // CSS 애니메이션을 위한 스타일 시트
+import "./styles/App.css"; // CSS 애니메이션을 위한 스타일 시트
 
 // 페이지 순서를 나타내는 객체
 const pageOrder = {
