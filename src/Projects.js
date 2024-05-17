@@ -430,6 +430,10 @@ function Projects() {
             {selectedProject.modal_description}
             <h3>※ 주요 기능</h3>
             {selectedProject.modal_func}
+            <h2>3. 제작 배경</h2>
+            {selectedProject.story}
+            <h2>4. 사용한 기술</h2>
+            {selectedProject.stack}
           </DescriptionModalBox>
           <CloseButton onClick={closeModal}>X</CloseButton>
         </DescriptionModal>
