@@ -15,10 +15,9 @@ import {
 } from "react-icons/md";
 
 const Skill = styled.div`
-  height: 100vh;
-  overflow-y: hidden; // 세로 스크롤을 숨김
-  background-color: #c19a6b;
-  position: relative; // NextPage를 포함하기 위한 상대 위치
+  min-height: 100vh; // 최소 높이를 뷰포트 높이로 설정
+  background-color: #c19a6b; // 배경색 설정
+  position: relative;
 `;
 
 const SkillContainer = styled.div`
@@ -28,9 +27,9 @@ const SkillContainer = styled.div`
   flex-direction: column;
   margin: 0 auto;
   padding: 6rem 2rem;
-  position: relative; /* 상위 요소에 상대적 위치 지정 */
-  z-index: 1; /* 필요한 경우 z-index 조정 */
-  overflow: visible; /* 내부 요소가 바깥으로 나와도 괜찮다면 overflow를 visible로 설정 */
+  position: relative;
+  z-index: 1;
+  overflow: visible;
 `;
 
 const SkillContentContainer = styled.div`
@@ -41,29 +40,36 @@ const SkillContentContainer = styled.div`
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative; /* 책꽂이에 상대적 위치 지정 */
-  z-index: 2; /* z-index를 상위 요소보다 높게 설정 */
-  width: 60%;
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 1200px;
+  flex-wrap: wrap;
+
+  @media (min-width: 768px) {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
 `;
 
 const WhiteBoard = styled.div`
-  width: 10rem; /* 책의 너비를 설정합니다. */
-  height: 15rem; /* 책의 높이를 설정합니다. */
-  margin: 1rem; /* 책과 책 사이의 간격을 설정합니다. */
+  width: 10rem;
+  height: 15rem;
+  margin: 1rem;
   padding: 1rem;
   display: flex;
-  flex-direction: column; /* 내용을 세로로 나열합니다. */
-  justify-content: center; /* 내용을 중앙에 배치합니다. */
-  align-items: center; /* 내용을 중앙에 배치합니다. */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border-radius: 0.5rem;
   background-color: #fff;
   box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   cursor: pointer;
+
   &:hover {
-    transform: translateY(
-      -10px
-    ); /* 호버 시 책이 살짝 위로 올라가는 효과를 줍니다. */
+    transform: translateY(-10px);
   }
 `;
 
@@ -84,7 +90,7 @@ const Monitor = styled.div`
   border-radius: 1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 2;
-  width: 50%;
+  width: 80%;
   height: 40vh;
 `;
 
@@ -108,9 +114,9 @@ const LeftAnimation = keyframes`
 `;
 
 const NextPage = styled.div`
-  position: fixed; // 화면에 고정되도록 설정
+  position: fixed;
   right: 40px;
-  top: 50%; // 페이지 하단에 위치하도록 조정합니다.
+  top: 50%;
   font-size: 100px;
   transition: all 2s;
   z-index: 2;
@@ -123,9 +129,9 @@ const NextPage = styled.div`
   }
 `;
 const PrevPage = styled.div`
-  position: fixed; // 화면에 고정되도록 설정
+  position: fixed;
   left: 40px;
-  top: 50%; // 페이지 하단에 위치하도록 조정합니다.
+  top: 50%;
   font-size: 100px;
   transition: all 2s;
   z-index: 2;
@@ -154,10 +160,8 @@ function Skills() {
   const [displayContent, setDisplayContent] = useState("");
   const toggleBoard = (index) => {
     if (expandedBoard.index === index && expandedBoard.expanded) {
-      // 이미 확장된 상태에서 다시 클릭 시, 변화 없이 유지
       setExpandedBoard({ index, expanded: true });
     } else {
-      // 새로운 WhiteBoard 클릭 시, 잠깐 초기 상태로 돌아갔다가 새로운 내용으로 변경
       setDisplayContent("Switching...");
       setExpandedBoard({ index, expanded: true });
     }
@@ -184,7 +188,7 @@ function Skills() {
             />
           </div>
         );
-      }, 500); // 500ms의 딜레이 후 콘텐츠 변경
+      }, 500);
       return () => clearTimeout(timer);
     } else {
       setDisplayContent("Choose a skill to learn more");

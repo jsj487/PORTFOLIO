@@ -65,6 +65,7 @@ const ProjectContainer = styled.div`
   max-width: 71.25rem;
   padding: 4rem 2rem;
   margin: 0 auto;
+  box-sizing: border-box; // 추가하여 여백 문제 해결
 `;
 
 const ProjectContentContainer = styled.div`
@@ -80,6 +81,13 @@ const ProjectWhiteBoard = styled(WhiteBoard)`
   &:hover {
     width: 60rem;
   }
+
+  @media (max-width: 768px) {
+    width: 100%; // 모바일에서 너비를 100%로 설정
+    &:hover {
+      width: 100%; // 호버 시에도 동일하게 유지
+    }
+  }
 `;
 
 const ProjectTitle = styled.div`
@@ -88,6 +96,10 @@ const ProjectTitle = styled.div`
   color: #000;
   text-align: center;
   margin-bottom: 20px;
+
+  @media (max-width: 768px) {
+    font-size: 25px; // 모바일에서 글자 크기 조정
+  }
 `;
 
 const ProjectDate = styled.div`
@@ -95,10 +107,18 @@ const ProjectDate = styled.div`
   text-align: center;
   color: #9d9d9d;
   margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    font-size: 15px; // 모바일에서 글자 크기 조정
+  }
 `;
 
 const ProjectWhiteBoardContent = styled.div`
   display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column; // 모바일에서 세로 배치
+  }
 `;
 
 const ProjectImgBox = styled.div`
@@ -106,10 +126,20 @@ const ProjectImgBox = styled.div`
   position: relative;
   width: 50%;
   margin-right: 3rem;
+
+  @media (max-width: 768px) {
+    width: 100%; // 모바일에서 너비를 100%로 설정
+    margin-right: 0; // 여백 제거
+    margin-bottom: 20px; // 하단 여백 추가
+  }
 `;
 
 const ProjectDescriptionContainer = styled.div`
   width: 50%;
+
+  @media (max-width: 768px) {
+    width: 100%; // 모바일에서 너비를 100%로 설정
+  }
 `;
 
 const ProjectMainDescription = styled.div``;
@@ -126,6 +156,10 @@ const ProjectRead = styled.p`
 
   &:hover {
     animation: ${hoverAnimation} 1s ease-in-out infinite;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1rem; // 모바일에서 글자 크기 조정
   }
 `;
 
@@ -165,12 +199,21 @@ const DescriptionModal = styled.div`
 const DescriptionModalBox = styled.div`
   max-width: 1200px;
   min-width: 1200px;
+
+  @media (max-width: 768px) {
+    width: 100%; // 모바일에서 너비를 100%로 설정
+    min-width: 0; // 최소 너비 제거
+  }
 `;
 
 const ModalTitle = styled.h1`
   margin: 0 0 30px 0;
   color: #333;
   font-size: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem; // 모바일에서 글자 크기 조정
+  }
 `;
 
 const CloseButton = styled.button`
@@ -206,6 +249,11 @@ const SubDescriptionTitle = styled.div`
   width: 8.4rem;
   font-weight: 900;
   font-size: 1rem;
+
+  @media (max-width: 768px) {
+    width: 6rem; // 모바일에서 너비 조정
+    font-size: 0.9rem; // 글자 크기 조정
+  }
 `;
 
 const SubDescriptionContent = styled.div`
@@ -214,101 +262,10 @@ const SubDescriptionContent = styled.div`
   width: calc(100% - 8.4rem);
   font-weight: 400;
   font-size: 1rem;
-`;
 
-const SliderContainer = styled.div`
-  overflow: hidden;
-  width: 100%;
-  position: relative;
-  margin-bottom: 20px;
-`;
-
-const ImagesContainer = styled.div`
-  display: flex;
-  transition: transform 0.3s ease-out;
-  margin-bottom: 40px;
-`;
-
-const Image = styled.img`
-  max-width: 100%;
-  height: auto;
-  flex: 0 0 auto;
-  object-fit: contain;
-  cursor: pointer;
-`;
-
-const ButtonUI = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-
-  button {
-    pointer-events: auto;
-    background-color: #ffffff;
-    border: 1px solid #000;
-    border-radius: 50%;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &:focus {
-      outline: none;
-    }
-
-    svg {
-      width: 20px;
-      height: 20px;
-    }
-  }
-`;
-
-const ModalBackdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-`;
-
-const ModalImage = styled.img`
-  max-width: 80%;
-  max-height: 80vh;
-  z-index: 1050;
-`;
-
-const ArrowButton = styled.button`
-  all: unset;
-  font-size: 2em;
-  color: white;
-  cursor: pointer;
-  z-index: 1051;
-  &:hover {
-    color: #ddd;
-  }
-`;
-
-const LeftArrow = styled(ArrowButton)`
-  position: absolute;
-  left: 50px;
-  svg {
-    font-size: 80px;
-  }
-`;
-
-const RightArrow = styled(ArrowButton)`
-  position: absolute;
-  right: 50px;
-  svg {
-    font-size: 80px;
+  @media (max-width: 768px) {
+    width: calc(100% - 6rem); // 모바일에서 너비 조정
+    font-size: 0.9rem; // 글자 크기 조정
   }
 `;
 
@@ -324,6 +281,11 @@ const PrevPage = styled.div`
 
   &:hover {
     animation: ${LeftAnimation} 1s ease-in-out infinite;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 50px; // 모바일에서 아이콘 크기 조정
+    left: 20px; // 아이콘 위치 조정
   }
 `;
 

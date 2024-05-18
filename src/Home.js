@@ -46,15 +46,31 @@ const Title = styled.div`
 
 const TitleMain = styled.div`
   font-weight: 700;
-  font-size: 50px;
+  font-size: 2.5rem; // 기본 크기
   color: #fff;
+
+  @media (min-width: 768px) {
+    font-size: 2.5rem; // 태블릿
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 3rem; // 데스크탑
+  }
 `;
 
 const TitleContent = styled.div`
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1rem; // 기본 크기
   color: #d9d9d9;
   margin-bottom: 40px;
+
+  @media (min-width: 768px) {
+    font-size: 1rem; // 태블릿
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.25rem; // 데스크탑
+  }
 `;
 
 const Detail = styled.div`
@@ -62,13 +78,21 @@ const Detail = styled.div`
   border-radius: 30px;
   padding: 15px 30px;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1rem; // 기본 크기
   background-color: #b4846c;
   color: #fff;
   cursor: pointer;
 
   &:hover {
     color: rgb(224, 224, 224);
+  }
+
+  @media (min-width: 768px) {
+    font-size: 1.1rem; // 태블릿
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 1.3rem; // 데스크탑
   }
 `;
 
@@ -95,7 +119,7 @@ function Home() {
             <br />제 사이트가 어떻게 하면 더 발전을 할 수 있을까 항상 생각하며
             고민하는 것이 제 장점입니다.
           </TitleContent>
-          <Detail onClick={handleClick}>자세히 보기</Detail>
+          <Detail onClick={handleClick}>자세히 보기 ▶</Detail>
         </TitleContainer>
       </Title>
     </PageWrapper>

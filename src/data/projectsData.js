@@ -324,7 +324,11 @@ export const projectsData = [
         https://github.com/jsj487/PORTFOLIO
       </a>
     ),
-    url: <a>-</a>,
+    url: (
+      <a href="https://jsj487.github.io/PORTFOLIO">
+        https://jsj487.github.io/PORTFOLIO
+      </a>
+    ),
     frontend: "React, JavaScript, CSS",
     backend: "-",
     modal_description: (

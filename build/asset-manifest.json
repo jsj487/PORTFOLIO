@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PORTFOLIO/static/css/main.1772acbc.css",
-    "main.js": "/PORTFOLIO/static/js/main.8fb0963b.js",
+    "main.js": "/PORTFOLIO/static/js/main.dc4a7458.js",
     "static/media/NotoSansKR-VariableFont_wght.ttf": "/PORTFOLIO/static/media/NotoSansKR-VariableFont_wght.33752a94ca5252213de8.ttf",
     "static/media/jetflix3.png": "/PORTFOLIO/static/media/jetflix3.94f1b68db67849b8f58e.png",
     "static/media/portfolio1.png": "/PORTFOLIO/static/media/portfolio1.2e9bfe4e5e0281304ba9.png",
@@ -30,10 +30,10 @@
     "static/media/jetflix1.png": "/PORTFOLIO/static/media/jetflix1.5a1603e21c453acc1db9.png",
     "index.html": "/PORTFOLIO/index.html",
     "main.1772acbc.css.map": "/PORTFOLIO/static/css/main.1772acbc.css.map",
-    "main.8fb0963b.js.map": "/PORTFOLIO/static/js/main.8fb0963b.js.map"
+    "main.dc4a7458.js.map": "/PORTFOLIO/static/js/main.dc4a7458.js.map"
   },
   "entrypoints": [
     "static/css/main.1772acbc.css",
-    "static/js/main.8fb0963b.js"
+    "static/js/main.dc4a7458.js"
   ]
 }
