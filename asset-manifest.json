@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/PORTFOLIO/static/css/main.1772acbc.css",
+    "main.js": "/PORTFOLIO/static/js/main.dc4a7458.js",
+    "static/media/NotoSansKR-VariableFont_wght.ttf": "/PORTFOLIO/static/media/NotoSansKR-VariableFont_wght.33752a94ca5252213de8.ttf",
+    "static/media/jetflix3.png": "/PORTFOLIO/static/media/jetflix3.94f1b68db67849b8f58e.png",
+    "static/media/portfolio1.png": "/PORTFOLIO/static/media/portfolio1.2e9bfe4e5e0281304ba9.png",
+    "static/media/casaverde2.png": "/PORTFOLIO/static/media/casaverde2.3deced7083cca3562d7a.png",
+    "static/media/casaverde3.png": "/PORTFOLIO/static/media/casaverde3.0dbc7c0827e7566ff378.png",
+    "static/media/casaverde1.png": "/PORTFOLIO/static/media/casaverde1.c04cae2f985f811b81c5.png",
+    "static/media/jetflix2.png": "/PORTFOLIO/static/media/jetflix2.5981794b7cf479361e89.png",
+    "static/media/FrontEnd.png": "/PORTFOLIO/static/media/FrontEnd.1f07be79183d67b90b7c.png",
+    "static/media/foodeat3.png": "/PORTFOLIO/static/media/foodeat3.2a43c78b0c19516866fc.png",
+    "static/media/VersionControl.png": "/PORTFOLIO/static/media/VersionControl.bb632b59412758e8be50.png",
+    "static/media/portfolio2.png": "/PORTFOLIO/static/media/portfolio2.93f493ed94fbcb2cfb1c.png",
+    "static/media/portfolio4.png": "/PORTFOLIO/static/media/portfolio4.c6f1d849cdc9a82d8ace.png",
+    "static/media/foodeat1.png": "/PORTFOLIO/static/media/foodeat1.7f296810f43bd3518283.png",
+    "static/media/resume.jpg": "/PORTFOLIO/static/media/resume.0f825cfa87660c4bf718.jpg",
+    "static/media/Certificate.png": "/PORTFOLIO/static/media/Certificate.be7e8d16bf78e1946cd6.png",
+    "static/media/foodeat5.png": "/PORTFOLIO/static/media/foodeat5.3adebdde5357f70d05bb.png",
+    "static/media/foodeat6.png": "/PORTFOLIO/static/media/foodeat6.57f78e9eed21bf108ad6.png",
+    "static/media/background.jpg": "/PORTFOLIO/static/media/background.3047d1e95b47a1f85731.jpg",
+    "static/media/casaverde6.png": "/PORTFOLIO/static/media/casaverde6.6b849419ae98cb55dafe.png",
+    "static/media/casaverde4.png": "/PORTFOLIO/static/media/casaverde4.cebd7cd326705156f848.png",
+    "static/media/foodeat4.jpg": "/PORTFOLIO/static/media/foodeat4.d27662ac456a4ad1471c.jpg",
+    "static/media/casaverde5.png": "/PORTFOLIO/static/media/casaverde5.ce7c8e1cee35e048ca21.png",
+    "static/media/portfolio3.png": "/PORTFOLIO/static/media/portfolio3.14a408446ae14c5a1f7e.png",
+    "static/media/casaverde7.png": "/PORTFOLIO/static/media/casaverde7.4d7243e404d8f6221bab.png",
+    "static/media/foodeat2.png": "/PORTFOLIO/static/media/foodeat2.bcd42c4e78c25d536cd2.png",
+    "static/media/jetflix1.png": "/PORTFOLIO/static/media/jetflix1.5a1603e21c453acc1db9.png",
+    "index.html": "/PORTFOLIO/index.html",
+    "main.1772acbc.css.map": "/PORTFOLIO/static/css/main.1772acbc.css.map",
+    "main.dc4a7458.js.map": "/PORTFOLIO/static/js/main.dc4a7458.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1772acbc.css",
+    "static/js/main.dc4a7458.js"
+  ]
+}
