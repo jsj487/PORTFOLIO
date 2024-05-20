@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import backgroundImg from "./img/background.jpg";
 
 const PageWrapper = styled.div`
-  overflow-x: hidden; // 가로 스크롤 방지
+  overflow-x: hidden;
 `;
 
 const TitleContainer = styled.div`
@@ -24,8 +24,8 @@ const Title = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; // 추가
-  height: 100vh; // 전체 화면 높이 차지
+  position: relative;
+  height: 100vh;
   &::before {
     content: "";
     position: absolute;
@@ -38,7 +38,7 @@ const Title = styled.div`
         rgba(112, 93, 80, 0.8) 0,
         rgba(112, 93, 80, 0.8) 90%
       ),
-      url(${backgroundImg}) center no-repeat; // 50%를 center로 변경 가능
+      url(${backgroundImg}) center no-repeat;
     background-size: cover;
     z-index: -1;
   }
@@ -46,30 +46,30 @@ const Title = styled.div`
 
 const TitleMain = styled.div`
   font-weight: 700;
-  font-size: 2.5rem; // 기본 크기
+  font-size: 2.5rem;
   color: #fff;
 
   @media (min-width: 768px) {
-    font-size: 2.5rem; // 태블릿
+    font-size: 2.5rem;
   }
 
   @media (min-width: 1024px) {
-    font-size: 3rem; // 데스크탑
+    font-size: 3rem;
   }
 `;
 
 const TitleContent = styled.div`
   font-weight: 400;
-  font-size: 1rem; // 기본 크기
+  font-size: 1rem;
   color: #d9d9d9;
   margin-bottom: 40px;
 
   @media (min-width: 768px) {
-    font-size: 1rem; // 태블릿
+    font-size: 1rem;
   }
 
   @media (min-width: 1024px) {
-    font-size: 1.25rem; // 데스크탑
+    font-size: 1.25rem;
   }
 `;
 
@@ -78,7 +78,7 @@ const Detail = styled.div`
   border-radius: 30px;
   padding: 15px 30px;
   font-weight: 400;
-  font-size: 1rem; // 기본 크기
+  font-size: 1rem;
   background-color: #b4846c;
   color: #fff;
   cursor: pointer;
@@ -88,16 +88,18 @@ const Detail = styled.div`
   }
 
   @media (min-width: 768px) {
-    font-size: 1.1rem; // 태블릿
+    font-size: 1.1rem;
   }
 
   @media (min-width: 1024px) {
-    font-size: 1.3rem; // 데스크탑
+    font-size: 1.3rem;
   }
 `;
 
 function Home() {
   const navigate = useNavigate();
+
+  // "자세히 보기" 버튼 클릭 시 "/about-me" 경로로 이동하는 함수
   const handleClick = () => {
     navigate("/about-me");
   };

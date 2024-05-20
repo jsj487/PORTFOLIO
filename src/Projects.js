@@ -5,8 +5,8 @@ import { MdKeyboardDoubleArrowLeft } from "react-icons/md";
 import ImageSlider from "./components/ImageSlider";
 import { projectsData } from "./data/projectsData";
 import styled, { keyframes } from "styled-components";
+import { PrevPage } from "./components/NavigationButtons";
 
-// 공통 스타일과 애니메이션 정의
 const hoverAnimation = keyframes`
   0% { transform: translateX(0); }
   50% { transform: translateX(10px); }
@@ -35,26 +35,6 @@ const slideUp = keyframes`
   }
 `;
 
-const LeftAnimation = keyframes`
-  0%, 100% { left: 40px; }
-  50% { left: 30px; }
-`;
-
-// 스타일 정의
-const WhiteBoard = styled.div`
-  width: 17rem;
-  padding: 1.5rem;
-  margin: 0 auto 2rem;
-  border-radius: 1rem;
-  background-color: #fff;
-  box-shadow: 1rem 1rem 1rem 0 rgba(68, 68, 68, 0.2);
-  transition: width 0.5s ease;
-
-  &:hover {
-    width: 18rem;
-  }
-`;
-
 const Project = styled.div`
   background-color: #0177a9;
   padding-top: 100px;
@@ -62,32 +42,32 @@ const Project = styled.div`
 
 const ProjectContainer = styled.div`
   width: 100%;
-  max-width: 71.25rem;
+  max-width: 95rem;
   padding: 4rem 2rem;
   margin: 0 auto;
-  box-sizing: border-box; // 추가하여 여백 문제 해결
+  box-sizing: border-box;
 `;
 
 const ProjectContentContainer = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
 `;
 
-const ProjectWhiteBoard = styled(WhiteBoard)`
-  width: 60rem;
+const ProjectWhiteBoard = styled.div`
+  width: 100%;
+  padding: 2rem;
+  margin: 0 auto;
+  border-radius: 1rem;
+  background-color: #fff;
   box-shadow: 1rem 1rem 1rem 0 rgba(68, 68, 68, 0.2);
-
-  &:hover {
-    width: 60rem;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%; // 모바일에서 너비를 100%로 설정
-    &:hover {
-      width: 100%; // 호버 시에도 동일하게 유지
-    }
-  }
+  transition: width 0.5s ease;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
 `;
 
 const ProjectTitle = styled.div`
@@ -98,7 +78,7 @@ const ProjectTitle = styled.div`
   margin-bottom: 20px;
 
   @media (max-width: 768px) {
-    font-size: 25px; // 모바일에서 글자 크기 조정
+    font-size: 25px;
   }
 `;
 
@@ -109,36 +89,35 @@ const ProjectDate = styled.div`
   margin-bottom: 30px;
 
   @media (max-width: 768px) {
-    font-size: 15px; // 모바일에서 글자 크기 조정
+    font-size: 15px;
   }
 `;
 
 const ProjectWhiteBoardContent = styled.div`
   display: flex;
+  flex-direction: column;
 
   @media (max-width: 768px) {
-    flex-direction: column; // 모바일에서 세로 배치
+    flex-direction: column;
   }
 `;
 
 const ProjectImgBox = styled.div`
   overflow: hidden;
   position: relative;
-  width: 50%;
-  margin-right: 3rem;
+  width: 100%;
+  margin-bottom: 1.5rem;
 
   @media (max-width: 768px) {
-    width: 100%; // 모바일에서 너비를 100%로 설정
-    margin-right: 0; // 여백 제거
-    margin-bottom: 20px; // 하단 여백 추가
+    width: 100%;
   }
 `;
 
 const ProjectDescriptionContainer = styled.div`
-  width: 50%;
+  width: 100%;
 
   @media (max-width: 768px) {
-    width: 100%; // 모바일에서 너비를 100%로 설정
+    width: 100%;
   }
 `;
 
@@ -159,7 +138,7 @@ const ProjectRead = styled.p`
   }
 
   @media (max-width: 768px) {
-    font-size: 1rem; // 모바일에서 글자 크기 조정
+    font-size: 1rem;
   }
 `;
 
@@ -181,7 +160,7 @@ const DescriptionModal = styled.div`
     forwards;
 
   hr {
-    color: rgba(128, 128, 128, 0.7); // 연한 회색
+    color: rgba(128, 128, 128, 0.7);
   }
 
   h2 {
@@ -201,8 +180,8 @@ const DescriptionModalBox = styled.div`
   min-width: 1200px;
 
   @media (max-width: 768px) {
-    width: 100%; // 모바일에서 너비를 100%로 설정
-    min-width: 0; // 최소 너비 제거
+    width: 100%;
+    min-width: 0;
   }
 `;
 
@@ -212,7 +191,7 @@ const ModalTitle = styled.h1`
   font-size: 2rem;
 
   @media (max-width: 768px) {
-    font-size: 1.5rem; // 모바일에서 글자 크기 조정
+    font-size: 1.5rem;
   }
 `;
 
@@ -220,15 +199,15 @@ const CloseButton = styled.button`
   position: absolute;
   top: 30px;
   right: 30px;
-  background: none; // 배경 제거
-  border: none; // 테두리 제거
-  color: rgba(128, 128, 128, 0.7); // 연한 회색
-  font-size: 3rem; // 적절한 크기 설정
-  cursor: pointer; // 마우스를 올리면 클릭 모양으로 변경
-  transition: color 0.3s; // 색 변경에 대한 부드러운 전환
+  background: none;
+  border: none;
+  color: rgba(128, 128, 128, 0.7);
+  font-size: 3rem;
+  cursor: pointer;
+  transition: color 0.3s;
 
   &:hover {
-    color: rgba(128, 128, 128, 1); // 마우스를 올리면 더 진한 회색으로 변경
+    color: rgba(128, 128, 128, 1);
   }
 `;
 
@@ -251,8 +230,8 @@ const SubDescriptionTitle = styled.div`
   font-size: 1rem;
 
   @media (max-width: 768px) {
-    width: 6rem; // 모바일에서 너비 조정
-    font-size: 0.9rem; // 글자 크기 조정
+    width: 6rem;
+    font-size: 0.9rem;
   }
 `;
 
@@ -264,28 +243,8 @@ const SubDescriptionContent = styled.div`
   font-size: 1rem;
 
   @media (max-width: 768px) {
-    width: calc(100% - 6rem); // 모바일에서 너비 조정
-    font-size: 0.9rem; // 글자 크기 조정
-  }
-`;
-
-const PrevPage = styled.div`
-  position: fixed;
-  left: 40px;
-  top: 50%;
-  font-size: 100px;
-  transition: all 2s;
-  svg {
-    cursor: pointer;
-  }
-
-  &:hover {
-    animation: ${LeftAnimation} 1s ease-in-out infinite;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 50px; // 모바일에서 아이콘 크기 조정
-    left: 20px; // 아이콘 위치 조정
+    width: calc(100% - 6rem);
+    font-size: 0.9rem;
   }
 `;
 

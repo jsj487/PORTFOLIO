@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -12,7 +12,7 @@ const HeaderContainer = styled.header`
   align-items: center;
   padding: 1rem 2rem;
   background-color: #f8f8f8;
-  z-index: 1000; // 헤더가 다른 요소들 위에 나타나도록 z-index 값을 높입니다.
+  z-index: 1000;
 `;
 
 const Logo = styled.div`
@@ -27,24 +27,20 @@ const NavMenu = styled.nav`
 `;
 
 const Divider = styled.div`
-  height: 45px; // 구분선의 높이
-  width: 2px; // 구분선의 너비
-  background: linear-gradient(
-    #f8f8f8,
-    #b6b6b6,
-    #f8f8f8
-  ); // 위, 중앙, 아래 순으로 색상 지정
-  margin: 0 1rem; // 좌우 마진으로 링크 사이에 공간을 추가
+  height: 45px;
+  width: 2px;
+  background: linear-gradient(#f8f8f8, #b6b6b6, #f8f8f8);
+  margin: 0 1rem;
 `;
 
 const NavLinkStyled = styled(NavLink)`
   font-size: 1.2rem;
-  color: #777; // 기본 글씨 색상
+  color: #777;
   text-decoration: none;
   padding: 0.5rem 1rem;
 
   &.active {
-    color: #000; // 현재 페이지에 해당하는 링크의 글씨 색을 진하게 만듭니다.
+    color: #000;
     font-weight: bold;
   }
 `;

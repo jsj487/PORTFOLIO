@@ -128,6 +128,7 @@ export const projectsData = [
       </ul>
     ),
   },
+
   //CasaVerde
   {
     title: "CasaVerde(식물 판매 사이트)",

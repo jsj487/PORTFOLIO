@@ -1,17 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Header from "./components/Header";
+import { NextPage } from "./components/NavigationButtons";
 
 import { IoPersonSharp, IoPhonePortrait, IoMail } from "react-icons/io5";
 import { FaCalendar, FaMapMarkerAlt, FaPencilAlt } from "react-icons/fa";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
-import Resume from "./img/resume.jpg"; // 이 부분은 실제 경로에 맞게 변경해주세요.
-
+import Resume from "./img/resume.jpg";
 const AboutMeContainer = styled.div`
-  min-height: 100vh; // 뷰포트 높이를 최소 100%로 설정
-  overflow-y: auto; // 세로 스크롤 허용
+  min-height: 100vh;
+  overflow-y: auto;
 `;
 
 const PageContainer = styled.div`
@@ -19,167 +19,140 @@ const PageContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  width: 100%; // 페이지 컨테이너의 너비를 100%로 설정합니다.
+  width: 100%;
   padding-top: 100px;
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center; // 중앙 정렬을 위해 추가
-  width: 90%; // 기본 너비 설정
-  max-width: 1200px; // 최대 너비 설정
-  margin-bottom: 20px; // 하단 여백
-  flex-direction: column; // 모바일에서 세로 배치
+  justify-content: center;
+  width: 90%;
+  max-width: 1200px;
+  margin-bottom: 20px;
+  flex-direction: column;
 
   @media (min-width: 768px) {
-    width: 80%; // 태블릿에서 너비 조정
-    flex-direction: row; // 태블릿 이상에서 가로 배치
+    width: 80%;
+    flex-direction: row;
   }
 `;
 
 const ImageSection = styled.div`
-  width: 100%; // 기본 너비를 100%로 설정
-  max-width: 600px; // 최대 너비 설정
-  margin-bottom: 20px; // 모바일에서 하단 여백
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 20px;
 
   @media (min-width: 768px) {
-    flex: 0 0 600px; // 태블릿 이상에서는 고정 너비 설정
-    margin-bottom: 0; // 태블릿 이상에서는 여백 제거
-    margin-right: 40px; // 태블릿 이상에서는 오른쪽 여백을 더 많이 설정
+    flex: 0 0 600px;
+    margin-bottom: 0;
+    margin-right: 40px;
   }
 `;
 
 const ResumeImage = styled.img`
-  width: 100%; // 너비를 부모의 100%로 설정
-  height: auto; // 높이 자동 조절
+  width: 100%;
+  height: auto;
 `;
 
 const InfoSection = styled.div`
-  width: 100%; // 기본 너비를 100%로 설정
+  width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr; // 2열 그리드
-  grid-template-rows: repeat(3, auto); // 3행 그리드
-  gap: 10px; // 그리드 아이템 사이의 간격 설정
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
+  gap: 10px;
 
   @media (min-width: 768px) {
-    flex: 1; // 태블릿 이상에서는 flex: 1 설정
-    display: flex; // 태블릿 이상에서는 flexbox로 변경
+    flex: 1;
+    display: flex;
     flex-direction: column;
-    margin-left: 130px; // 태블릿 이상에서는 왼쪽 여백 추가
+    margin-left: 75px;
   }
 `;
 
 const InfoContainer = styled.div`
   display: flex;
-  align-items: center; // 아이콘과 텍스트를 가운데 정렬
-  position: relative; // 가상 요소에 대한 위치 지정을 위해 relative 설정
-  min-height: 70px; // 각 그리드 항목의 최소 높이를 설정
-  width: 130%; // InfoContainer의 너비를 90%로 설정
+  align-items: center;
+  position: relative;
+  min-height: 70px;
+  width: 130%;
 
   &::after {
     content: "";
     display: block;
-    width: 85%; // 밑줄의 길이를 InfoContainer의 너비보다 짧게 설정
-    height: 5px; // 밑줄의 두께를 설정합니다.
+    width: 85%;
+    height: 5px;
     border-radius: 20px;
-    background: linear-gradient(to right, #cbcbcb, white); // 그라데이션 적용
+    background: linear-gradient(to right, #cbcbcb, white);
     position: absolute;
-    bottom: -15px; // 밑줄이 InfoContainer의 아래쪽으로 더 멀리 위치하도록 조정합니다.
+    bottom: -15px;
     left: 0;
 
     @media (max-width: 767px) {
-      display: none; // 모바일에서는 밑줄 제거
+      display: none;
     }
   }
 
   &:not(:last-child) {
-    margin-bottom: 45px; // 마지막 요소를 제외하고 margin-bottom 적용
+    margin-bottom: 45px;
 
     @media (min-width: 768px) {
-      margin-bottom: 45px; // 태블릿 이상에서는 45px의 여백 적용
+      margin-bottom: 45px;
     }
 
     @media (min-width: 1024px) {
-      margin-bottom: 40px; // 데스크탑 이상에서는 60px의 여백 적용
+      margin-bottom: 40px;
     }
   }
 `;
 
 const IconContainer = styled.div`
-  font-size: 1.5em; // 기본 아이콘 크기
+  font-size: 1.5em;
 
   @media (min-width: 768px) {
-    font-size: 1.2em; // 태블릿 이상에서 아이콘 크기 조정
+    font-size: 1.2em;
   }
 
   @media (min-width: 1024px) {
-    font-size: 2em; // 데스크탑에서 아이콘 크기 조정
+    font-size: 2em;
   }
 
-  width: 80px; // 아이콘 컨테이너의 너비를 고정
-  display: flex; // flex를 사용하여 아이콘을 정렬
-  align-items: center; // 세로 중앙 정렬
+  width: 80px;
+  display: flex;
+  align-items: center;
 `;
 
 const InfoText = styled.div`
   display: flex;
-  flex-direction: column; // 텍스트를 세로로 정렬
+  flex-direction: column;
 `;
 
 const InfoTitle = styled.div`
-  font-size: 1.25em; // 기본 글자 크기
-  font-weight: bold; // 글자 두께
+  font-size: 1.25em;
+  font-weight: bold;
 
   @media (min-width: 768px) {
-    font-size: 1em; // 태블릿 이상에서 글자 크기 조정
+    font-size: 1em;
   }
 
   @media (min-width: 1024px) {
-    font-size: 1.75em; // 데스크탑에서 글자 크기 조정
+    font-size: 1.75em;
   }
 `;
 
 const Info = styled.div`
-  font-size: 1em; // 기본 글자 크기
+  font-size: 1em;
 
   @media (min-width: 768px) {
-    font-size: 0.875em; // 태블릿 이상에서 글자 크기 조정
+    font-size: 0.875em;
   }
 
   @media (min-width: 1024px) {
-    font-size: 1.5em; // 데스크탑에서 글자 크기 조정
+    font-size: 1.5em;
   }
 `;
 
-const hoverAnimation = keyframes`
-  0%, 100% { right: 40px; }
-  50% { right: 30px; }
-`;
-
-const NextPage = styled.div`
-  position: absolute;
-  right: 40px;
-  font-size: 50px;
-
-  @media (min-width: 768px) {
-    font-size: 40px; // 태블릿 이상에서 아이콘 크기 조정
-  }
-
-  @media (min-width: 1024px) {
-    font-size: 80px; // 데스크탑에서 아이콘 크기 조정
-  }
-
-  transition: all 2s;
-
-  &:hover {
-    animation: ${hoverAnimation} 1s ease-in-out infinite;
-  }
-  svg {
-    cursor: pointer;
-  }
-`;
-
+// 간단한 개인정보 데이터
 const aboutMeData = [
   { icon: <IoPersonSharp />, title: "이름", content: "조승준" },
   { icon: <FaCalendar />, title: "생년월일", content: "1999.07.30" },
@@ -209,9 +182,7 @@ const aboutMeData = [
 
 function AboutMe() {
   const navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/skills");
-  };
+
   return (
     <AboutMeContainer>
       <Header />
@@ -232,8 +203,8 @@ function AboutMe() {
             ))}
           </InfoSection>
         </ContentWrapper>
-        <NextPage>
-          <MdKeyboardDoubleArrowRight onClick={handleClick} />
+        <NextPage onClick={() => navigate("/skills")}>
+          <MdKeyboardDoubleArrowRight />
         </NextPage>
       </PageContainer>
     </AboutMeContainer>

@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Header from "./components/Header";
+import { PrevPage, NextPage } from "./components/NavigationButtons"; // 추가
 
+//아이콘 import
+import {
+  MdKeyboardDoubleArrowRight,
+  MdKeyboardDoubleArrowLeft,
+} from "react-icons/md";
+
+//기술스택 사진 import
 import FrontEndIcon from "./img/FrontEnd.png";
 import VersionControlIcon from "./img/VersionControl.png";
 import CertificateIcon from "./img/Certificate.png";
 import Skills6Icon from "./img/skills6.png";
 import Skills7Icon from "./img/skills7.png";
 
-import {
-  MdKeyboardDoubleArrowRight,
-  MdKeyboardDoubleArrowLeft,
-} from "react-icons/md";
-
 const Skill = styled.div`
-  min-height: 100vh; // 최소 높이를 뷰포트 높이로 설정
-  background-color: #c19a6b; // 배경색 설정
+  min-height: 100vh;
+  background-color: #c19a6b;
   position: relative;
 `;
 
@@ -103,47 +106,7 @@ const MonitorDisplay = styled.div`
   justify-content: center;
 `;
 
-const RightAnimation = keyframes`
-  0%, 100% { right: 40px; }
-  50% { right: 30px; }
-`;
-
-const LeftAnimation = keyframes`
-  0%, 100% { left: 40px; }
-  50% { left: 30px; }
-`;
-
-const NextPage = styled.div`
-  position: fixed;
-  right: 40px;
-  top: 50%;
-  font-size: 100px;
-  transition: all 2s;
-  z-index: 2;
-  svg {
-    cursor: pointer;
-  }
-
-  &:hover {
-    animation: ${RightAnimation} 1s ease-in-out infinite;
-  }
-`;
-const PrevPage = styled.div`
-  position: fixed;
-  left: 40px;
-  top: 50%;
-  font-size: 100px;
-  transition: all 2s;
-  z-index: 2;
-  svg {
-    cursor: pointer;
-  }
-
-  &:hover {
-    animation: ${LeftAnimation} 1s ease-in-out infinite;
-  }
-`;
-
+//기술스택 클릭 시 출력되는 데이터
 const skillsData = [
   { title: "FrontEnd", icon: FrontEndIcon },
   { title: "VersionControl", icon: VersionControlIcon },
@@ -158,6 +121,8 @@ function Skills() {
     expanded: false,
   });
   const [displayContent, setDisplayContent] = useState("");
+
+  // 기술스택 클릭 시 동작하는 함수
   const toggleBoard = (index) => {
     if (expandedBoard.index === index && expandedBoard.expanded) {
       setExpandedBoard({ index, expanded: true });
@@ -167,6 +132,7 @@ function Skills() {
     }
   };
 
+  // 기술스택이 선택되면 해당 이미지를 표시하는 useEffect
   useEffect(() => {
     if (expandedBoard.expanded && expandedBoard.index !== null) {
       const timer = setTimeout(() => {
@@ -196,17 +162,11 @@ function Skills() {
   }, [expandedBoard]);
 
   const navigate = useNavigate();
-  const NextBtn = () => {
-    navigate("/projects");
-  };
-  const PrevBtn = () => {
-    navigate("/about-me");
-  };
 
   return (
     <Skill>
       <Header />
-      <PrevPage onClick={PrevBtn}>
+      <PrevPage onClick={() => navigate("/about-me")}>
         <MdKeyboardDoubleArrowLeft />
       </PrevPage>
       <SkillContainer>
@@ -231,7 +191,7 @@ function Skills() {
           </MonitorDisplay>
         </Monitor>
       </SkillContainer>
-      <NextPage onClick={NextBtn}>
+      <NextPage onClick={() => navigate("/projects")}>
         <MdKeyboardDoubleArrowRight />
       </NextPage>
     </Skill>
