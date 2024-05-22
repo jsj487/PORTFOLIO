@@ -197,7 +197,7 @@ const ModalTitle = styled.h1`
 
 const CloseButton = styled.button`
   position: absolute;
-  top: 30px;
+  top: 10px;
   right: 30px;
   background: none;
   border: none;

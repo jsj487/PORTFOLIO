@@ -4,11 +4,14 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import { NextPage } from "./components/NavigationButtons";
 
+//아이콘 import
 import { IoPersonSharp, IoPhonePortrait, IoMail } from "react-icons/io5";
 import { FaCalendar, FaMapMarkerAlt, FaPencilAlt } from "react-icons/fa";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
+//이력서 사진 import
 import Resume from "./img/resume.jpg";
+
 const AboutMeContainer = styled.div`
   min-height: 100vh;
   overflow-y: auto;
@@ -32,7 +35,7 @@ const ContentWrapper = styled.div`
   margin-bottom: 20px;
   flex-direction: column;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     width: 80%;
     flex-direction: row;
   }
@@ -43,7 +46,7 @@ const ImageSection = styled.div`
   max-width: 600px;
   margin-bottom: 20px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     flex: 0 0 600px;
     margin-bottom: 0;
     margin-right: 40px;
@@ -62,7 +65,7 @@ const InfoSection = styled.div`
   grid-template-rows: repeat(3, auto);
   gap: 10px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -75,7 +78,7 @@ const InfoContainer = styled.div`
   align-items: center;
   position: relative;
   min-height: 70px;
-  width: 130%;
+  width: 100%;
 
   &::after {
     content: "";
@@ -88,17 +91,13 @@ const InfoContainer = styled.div`
     bottom: -15px;
     left: 0;
 
-    @media (max-width: 767px) {
+    @media (max-width: 1023px) {
       display: none;
     }
   }
 
   &:not(:last-child) {
     margin-bottom: 45px;
-
-    @media (min-width: 768px) {
-      margin-bottom: 45px;
-    }
 
     @media (min-width: 1024px) {
       margin-bottom: 40px;
@@ -108,10 +107,6 @@ const InfoContainer = styled.div`
 
 const IconContainer = styled.div`
   font-size: 1.5em;
-
-  @media (min-width: 768px) {
-    font-size: 1.2em;
-  }
 
   @media (min-width: 1024px) {
     font-size: 2em;
@@ -131,10 +126,6 @@ const InfoTitle = styled.div`
   font-size: 1.25em;
   font-weight: bold;
 
-  @media (min-width: 768px) {
-    font-size: 1em;
-  }
-
   @media (min-width: 1024px) {
     font-size: 1.75em;
   }
@@ -142,10 +133,6 @@ const InfoTitle = styled.div`
 
 const Info = styled.div`
   font-size: 1em;
-
-  @media (min-width: 768px) {
-    font-size: 0.875em;
-  }
 
   @media (min-width: 1024px) {
     font-size: 1.5em;
