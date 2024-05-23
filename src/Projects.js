@@ -38,6 +38,11 @@ const slideUp = keyframes`
 const Project = styled.div`
   background-color: #0177a9;
   padding-top: 100px;
+  min-height: 100vh;
+
+  @media (max-width: 768px) {
+    background-color: transparent;
+  }
 `;
 
 const ProjectContainer = styled.div`
@@ -46,6 +51,10 @@ const ProjectContainer = styled.div`
   padding: 4rem 2rem;
   margin: 0 auto;
   box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 const ProjectContentContainer = styled.div`
@@ -68,6 +77,10 @@ const ProjectWhiteBoard = styled.div`
   transition: width 0.5s ease;
   box-sizing: border-box;
   overflow-wrap: break-word;
+
+  @media (max-width: 768px) {
+    border: 1px solid #ccc;
+  }
 `;
 
 const ProjectTitle = styled.div`
@@ -191,7 +204,7 @@ const ModalTitle = styled.h1`
   font-size: 2rem;
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 `;
 

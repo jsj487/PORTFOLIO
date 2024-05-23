@@ -4,13 +4,14 @@ import styled from "styled-components";
 import Header from "./components/Header";
 import { NextPage } from "./components/NavigationButtons";
 
-//아이콘 import
+// 아이콘 import
 import { IoPersonSharp, IoPhonePortrait, IoMail } from "react-icons/io5";
 import { FaCalendar, FaMapMarkerAlt, FaPencilAlt } from "react-icons/fa";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 
-//이력서 사진 import
+// 이력서 사진 import
 import Resume from "./img/resume.jpg";
+import Resume2 from "./img/resume2.jpg";
 
 const AboutMeContainer = styled.div`
   min-height: 100vh;
@@ -28,48 +29,63 @@ const PageContainer = styled.div`
 
 const ContentWrapper = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
   width: 90%;
   max-width: 1200px;
-  margin-bottom: 20px;
   flex-direction: column;
 
   @media (min-width: 1024px) {
-    width: 80%;
     flex-direction: row;
+    justify-content: space-between;
   }
 `;
 
-const ImageSection = styled.div`
+const SectionWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  max-width: 600px;
-  margin-bottom: 20px;
 
   @media (min-width: 1024px) {
-    flex: 0 0 600px;
-    margin-bottom: 0;
-    margin-right: 40px;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
   }
 `;
 
 const ResumeImage = styled.img`
   width: 100%;
   height: auto;
+
+  @media (min-width: 1024px) {
+    width: 50%;
+  }
+
+  &.desktop {
+    display: none;
+
+    @media (min-width: 1024px) {
+      display: block;
+    }
+  }
+
+  &.mobile {
+    display: block;
+
+    @media (min-width: 1024px) {
+      display: none;
+    }
+  }
 `;
 
 const InfoSection = styled.div`
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(3, auto);
-  gap: 10px;
-
+  display: none;
   @media (min-width: 1024px) {
+    width: 50%;
     flex: 1;
     display: flex;
     flex-direction: column;
-    margin-left: 75px;
+    justify-content: center;
+    margin-left: 150px;
   }
 `;
 
@@ -79,22 +95,6 @@ const InfoContainer = styled.div`
   position: relative;
   min-height: 70px;
   width: 100%;
-
-  &::after {
-    content: "";
-    display: block;
-    width: 85%;
-    height: 5px;
-    border-radius: 20px;
-    background: linear-gradient(to right, #cbcbcb, white);
-    position: absolute;
-    bottom: -15px;
-    left: 0;
-
-    @media (max-width: 1023px) {
-      display: none;
-    }
-  }
 
   &:not(:last-child) {
     margin-bottom: 45px;
@@ -175,20 +175,21 @@ function AboutMe() {
       <Header />
       <PageContainer>
         <ContentWrapper>
-          <ImageSection>
-            <ResumeImage src={Resume} alt="Resume" />
-          </ImageSection>
-          <InfoSection>
-            {aboutMeData.map((item, index) => (
-              <InfoContainer key={index}>
-                <IconContainer>{item.icon}</IconContainer>
-                <InfoText>
-                  <InfoTitle>{item.title}</InfoTitle>
-                  <Info>{item.content}</Info>
-                </InfoText>
-              </InfoContainer>
-            ))}
-          </InfoSection>
+          <SectionWrapper>
+            <ResumeImage src={Resume} alt="Resume" className="desktop" />
+            <ResumeImage src={Resume2} alt="Resume" className="mobile" />
+            <InfoSection>
+              {aboutMeData.map((item, index) => (
+                <InfoContainer key={index}>
+                  <IconContainer>{item.icon}</IconContainer>
+                  <InfoText>
+                    <InfoTitle>{item.title}</InfoTitle>
+                    <Info>{item.content}</Info>
+                  </InfoText>
+                </InfoContainer>
+              ))}
+            </InfoSection>
+          </SectionWrapper>
         </ContentWrapper>
         <NextPage onClick={() => navigate("/skills")}>
           <MdKeyboardDoubleArrowRight />
