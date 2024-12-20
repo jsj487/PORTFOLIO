@@ -11,7 +11,7 @@ import {
 } from "react-icons/md";
 
 //기술스택 사진 import
-import FrontEndIcon from "./img/FrontEnd.png";
+import FrontEndIcon from "./img/FrontEnd2.png";
 import VersionControlIcon from "./img/VersionControl.png";
 import CertificateIcon from "./img/Certificate.png";
 import Skills6Icon from "./img/skills6.png";

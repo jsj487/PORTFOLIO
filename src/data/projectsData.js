@@ -1,3 +1,8 @@
+import ArkLator1 from "../img/ArkLator1.PNG";
+import ArkLator2 from "../img/ArkLator2.PNG";
+import ArkLator3 from "../img/ArkLator3.PNG";
+import ArkLator4 from "../img/ArkLator4.PNG";
+
 import FoodEat1 from "../img/foodeat1.png";
 import FoodEat2 from "../img/foodeat2.png";
 import FoodEat3 from "../img/foodeat3.png";
@@ -13,16 +18,132 @@ import CasaVerde5 from "../img/casaverde5.png";
 import CasaVerde6 from "../img/casaverde6.png";
 import CasaVerde7 from "../img/casaverde7.png";
 
-import JetFlix1 from "../img/jetflix1.png";
-import JetFlix2 from "../img/jetflix2.png";
-import JetFlix3 from "../img/jetflix3.png";
-
 import Portfolio1 from "../img/portfolio1.png";
 import Portfolio2 from "../img/portfolio2.png";
 import Portfolio3 from "../img/portfolio3.png";
 import Portfolio4 from "../img/portfolio4.png";
 
 export const projectsData = [
+  //ArkLator
+  {
+    title: "ArkLator(주간 골드 계산기)",
+    members: "1인 프로젝트",
+    date: "2024.12 ~ 제작 중",
+    image: [ArkLator1, ArkLator2, ArkLator3, ArkLator4],
+    description: (
+      <div>
+        스마일게이트에서 제작한 MMORPG 로스트아크는 국내에서 큰 인기를 끌고 있는
+        게임입니다. 이 게임의 주요 콘텐츠 중 하나인 레이드에서는 보상으로
+        골드라는 재화를 얻을 수 있습니다. 일반적으로 유저들은 한 캐릭터로 3개의
+        레이드를 진행하며, 6개의 캐릭터를 통해 총 18번의 레이드를 수행합니다.
+        <br /> <br />
+        <b>
+          {" "}
+          이 과정에서 추가 수입과 소비되는 골드를 체계적으로 기록하고, 주간 골드
+          수익을 한눈에 확인할 수 있는 사이트가 있으면 좋겠다는 생각에서
+          프로젝트를 시작하게 되었습니다.
+        </b>
+        <br /> <br />
+        저는 React, TypeScript와 사이트 배포를 위해 Render를 활용해 이 사이트를
+        제작하였으며, 이를 통해 부족했던 기술을 보완하고, 회사에서 필요로 하는
+        역량을 개발하고자 했습니다. 또한, 함께 게임을 즐기는 지인들과 다양한
+        피드백을 주고받으며, 사이트를 점진적으로 발전시켜 나가고 있습니다.
+      </div>
+    ),
+    main_func: <div>레이드 체크, 골드 계산, 추가 수입 및 소모 골드 기록</div>,
+    git: (
+      <a href="https://github.com/jsj487/RaidCalculate">
+        https://github.com/jsj487/RaidCalculate{" "}
+      </a>
+    ),
+    url: (
+      <a href="https://raidcalculate.onrender.com/">
+        https://raidcalculate.onrender.com/
+      </a>
+    ),
+    frontend: "React, TypeScript, Styled-Components",
+    backend: "Node.js, Render(Deploy)",
+    modal_description: (
+      <p>
+        <h2 style={{ color: "red" }}>
+          ※ 사이트를 체험하기 위해선 캐릭터 이름이 필요합니다. 캐릭터 검색란에
+          "조승준"을 검색 해 주세요.
+        </h2>
+        <strong>
+          ArkLator는 한 주 동안 LostArk를 통해 어느 정도의 수익을 얻을 수 있는지
+          계산해주는 사이트입니다.
+        </strong>
+        <br /> <br />
+        사이트에 접속하면 로스트아크 캐릭터의 닉네임을 검색할 수 있는 입력 창이
+        표시됩니다. 닉네임을 검색한 뒤 서버를 선택하면, 레이드를 진행할 캐릭터를
+        추가할 수 있는 섹션이 나타납니다. 이후, 왼쪽의 사이드 테이블을 사용하여
+        참여한 레이드를 체크하면, 추가한 캐릭터들이 벌어들인 골드 수입을 확인할
+        수 있습니다. 또한, 추가 수입과 소모 항목을 입력하여 보다 정확한 골드
+        수익을 계산할 수 있습니다.
+        <br /> <br />
+        특히, ArkLator의 가장 큰 장점은 LocalStorage를 활용해 검색 기록과 레이드
+        데이터를 저장한다는 점입니다. 이를 통해 컴퓨터를 꺼도 번거롭게 데이터를
+        다시 입력할 필요 없이 간편하게 사용할 수 있습니다.
+      </p>
+    ),
+    modal_func: (
+      <ul>
+        <li>
+          <strong>캐릭터 추가</strong>: 원하는 캐릭터를 추가하여 각 캐릭터의
+          레이드 수입을 확인할 수 있습니다.
+        </li>
+        <li>
+          <strong>캐릭터 상세 보기</strong>: 추가한 캐릭터 이미지를 클릭하면,
+          캐릭터를 보다 큰 화면에서 볼 수 있습니다.
+        </li>
+        <li>
+          <strong>레이드 체크</strong>: 이번 주에 참여한 레이드를 체크하여 골드
+          수입을 추적할 수 있습니다.
+        </li>
+        <li>
+          <strong>추가 수입 및 소모 관리</strong>: 캐릭터별로 추가 수입과 소모
+          골드를 기록하여 정확한 수입을 계산할 수 있습니다.
+        </li>
+        <li>
+          <strong>자동 저장 기능</strong>: LocalStorage를 이용해 데이터를
+          저장함으로써 반복 작업 없이 편리하게 이용할 수 있습니다.
+        </li>
+      </ul>
+    ),
+    story: (
+      <p>
+        ArkLator를 만들게 된 계기는 단순한 아이디어에서 시작되었습니다. 대학교
+        4학년 때 처음 웹사이트 제작을 시작하며, 언젠가는 제가 가장 관심 있는
+        게임과 관련된 사이트를 만들어보고 싶다는 목표를 품었습니다. 그러던 중,
+        지인들이 외부 사이트를 이용해 골드를 계산하는 모습을 보고 직접
+        제작해보기로 결심했습니다.
+        <br />
+        <br />
+        개발 초기에는 지인들로부터 피드백을 받았지만, 보다 객관적이고 다양한
+        의견이 필요하다고 느꼈습니다. 그래서 로스트아크 커뮤니티에 사이트를
+        공유하고, 많은 유저들의 의견을 수렴했습니다. 이를 통해 사이트는 점점 더
+        발전할 수 있었습니다.
+        <br />
+        <strong>
+          <a href="https://www.inven.co.kr/board/lostark/6271/974503?my=post">
+            https://www.inven.co.kr/board/lostark/6271/974503?my=post{" "}
+          </a>
+        </strong>
+        <br />
+        <br />
+        ArkLator는 단순히 기술 스택을 발전시키기 위해 시작한 프로젝트였지만,
+        많은 사람들의 호응을 얻으면서 꾸준히 발전시키고 유지하고 싶은 제 첫 번째
+        웹사이트가 되었습니다.
+      </p>
+    ),
+    stack: (
+      <ul>
+        <li>FrontEnd: React, TypeScript, Styled-Components</li>
+        <li>BackEnd: Node.js</li>
+        <li>Deployment: Render</li>
+      </ul>
+    ),
+  },
   //푸드잇
   {
     title: "푸드잇(식당 예약 사이트)",
@@ -222,80 +343,6 @@ export const projectsData = [
         <li>BackEnd : -</li>
         <li>DataBase : MongoDB</li>
         <li>Deployment : VMware, PostMan</li>
-      </ul>
-    ),
-  },
-
-  //JETFLIX
-  {
-    title: "JETFLIX(영화 소개 사이트)",
-    members: "1인 프로젝트",
-    date: "2024.1 ~ 2024.1 (1인 프로젝트)",
-    image: [JetFlix1, JetFlix2, JetFlix3],
-    description: (
-      <div>
-        <b>영화 목록 API를 이용해서 만든 영화 소개 사이트입니다.</b>
-        React를 배우고 처음 만든 사이트여서 기능도 없고 UI만 있는 사이트입니다.
-        <br /> <br />
-        React로 개발을 처음 하니 만큼 사이트 자체가 많이 투박합니다. Nomade 코딩
-        인강으로 배운 것을 이용해서 만든 사이트입니다.
-      </div>
-    ),
-    main_func: "영화 소개",
-    git: (
-      <a href="https://github.com/jsj487/react-beginner">
-        https://github.com/jsj487/react-beginner
-      </a>
-    ),
-    url: <a href="-">-</a>,
-    frontend: "React, JavaScript, CSS",
-    modal_description: (
-      <p>
-        <strong>
-          JETFLIX는 NETFLIX 이름을 착안 해서 만든 영화 소개 사이트입니다.
-          React를 배우고 이를 활용하고 싶어서 React를 기반으로 만든 웹
-          사이트입니다.
-        </strong>
-        <br />
-        영화 정보를 포함한 API를 사용하여 메인 화면에 영화 이미지를 나열합니다.
-        보고 싶은 영화를 클릭하면 해당 영화에 대한 정보를 확인할 수 있습니다.
-      </p>
-    ),
-    modal_func: (
-      <ul>
-        <li>API를 사용하여 영화 포스터를 확인할 수 있습니다.</li>
-        <li>
-          포스터를 클릭하면 영화의 다양한 정보(장르, 개봉일, 내용 등)를 확인할
-          수 있습니다.
-        </li>
-      </ul>
-    ),
-    story: (
-      <p>
-        지금까지 모든 웹사이트는 바닐라 JavaScript를 기반으로 만들어졌습니다.
-        하지만 현재 실무에서 가장 많이 사용되는 React를 배우고 싶어서 부트
-        캠프에서 제공하는 강의를 듣게 되었습니다. 강의에서 API를 사용하여 영화
-        소개 사이트를 만드는 것을 보고 저도 따라 만들어 보았습니다. 강의에서
-        사용한 API를 따라 하고, 그 후에 웹사이트의 디자인 부분을 변경하며 저만의
-        사이트를 만들려고 노력했습니다. 이를 통해 React의 기본 구조와 스타일드
-        컴포넌트를 사용하는 방법 등을 배울 수 있었습니다.
-        <br />
-        <br />
-        원래는 부트캠프에서 React 강의를 듣고 팀 프로젝트를 진행할 예정이었지만,
-        당시 졸업 프로젝트를 마무리하는 과정에서 수업에 제대로 집중할 수
-        없었습니다. 이전 프로젝트에서 팀원 중 한 명이 제 역할을 하지 못하면 다른
-        사람이 그 부담을 떠안아야 한다는 것을 느꼈습니다. 당시와 같은 상황에서
-        팀 프로젝트에 참여하는 것은 팀원들에게 폐를 끼치는 일이라고
-        생각했습니다. 그래서 부트캠프를 중도 이탈할 계획이었지만, 전
-        프로젝트에서 팀원들에게 좋은 평가를 받고 상황을 이해해 주신 매니저
-        덕분에 React를 공부하고 과제를 제출하는 것으로 대체 하여 부트캠프를
-        수료할 수 있었습니다. 부트캠프와 졸업 프로젝트 이후 배운 지식을 바탕으로
-        React를 사용하여 간단한 사이트를 만들었습니다.
-      </p>
-    ),
-    stack: (
-      <ul>
-        <li>FrontEnd : React, CSS, JavaScript</li>
       </ul>
     ),
   },
